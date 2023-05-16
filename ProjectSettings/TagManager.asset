@@ -9,6 +9,7 @@ TagManager:
   - bullet
   - deer
   - tree
+  - deerWayPoint
   layers:
   - Default
   - TransparentFX

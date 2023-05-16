@@ -15,7 +15,15 @@ public class Hunger : MonoBehaviour
         satiation = 50;
     }
 
-    public void eat(Eatable food) => satiation += food.nutritionalValue;
+    public void eat(Eatable food)
+    {
+        Inventory inventory = GameObject.FindObjectOfType<Inventory>();
+        if (inventory.food.Contains(food))
+        {
+            inventory.get(food);
+            satiation += food.nutritionalValue;
+        }
+    }
 
     void Update() 
     {

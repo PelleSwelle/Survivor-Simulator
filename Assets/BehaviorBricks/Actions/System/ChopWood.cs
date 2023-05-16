@@ -13,7 +13,7 @@ namespace BBUnity.Actions
         private float timeLeft;
         public override void OnStart()
         {
-            Survivor.instance.updateStatusText("chopping wood");
+            Logger.instance.updateTaskText("chopping wood");
             treeToChop = Util.getNearestTree();
             survivor = Survivor.instance.transform;
             timeLeft = timeToChop;

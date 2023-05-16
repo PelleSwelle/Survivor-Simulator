@@ -23,7 +23,11 @@ public class RadialMenu : MonoBehaviour
         close();
     }
 
-    void drink() => FindObjectOfType<Thirst>().waterLevel += 10;
+    void drink() 
+    {
+        close();
+        FindObjectOfType<Thirst>().waterLevel += 10;
+    }
 
     void addLogToFire()
     {

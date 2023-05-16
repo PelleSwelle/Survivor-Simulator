@@ -13,7 +13,7 @@ namespace BBUnity.Actions
         NavMeshAgent agent;
         public override void OnStart()
         {
-            Survivor.instance.updateStatusText("going to nearest tree");
+            Logger.instance.updateTaskText("going to nearest tree");
             agent = gameObject.GetComponent<NavMeshAgent>();
             target = getNearestTree();
             agent.destination = target.position;

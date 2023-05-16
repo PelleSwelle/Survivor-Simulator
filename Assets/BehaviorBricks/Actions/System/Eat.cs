@@ -1,19 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Pada1.BBCore;
 using Pada1.BBCore.Tasks;
 
 namespace BBUnity.Actions
 {
-    [Action("General/eat")]
+    [Action("Eat")]
     public class Eat : GOAction
     {
-        
-        public override TaskStatus OnUpdate()
-        {
+        Inventory inventory = GameObject.FindObjectOfType<Inventory>();
+        Hunger hunger = GameObject.FindObjectOfType<Hunger>();
+        Eatable foodToEat;
 
-            return base.OnUpdate();
+        public override void OnStart()
+        {
+            foodToEat = inventory.food[Random.Range(0, inventory.food.Count)];
+            hunger.eat(foodToEat);
         }
     }
 }

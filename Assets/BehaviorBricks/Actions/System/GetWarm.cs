@@ -14,7 +14,7 @@ namespace BBUnity.Actions
         Freezer freezer = GameObject.FindObjectOfType<Freezer>();
         public override void OnStart()
         {
-            Survivor.instance.updateStatusText("going to get warm");
+            Logger.instance.updateTaskText("going to get warm");
             gameObject.GetComponent<MeshRenderer>().material = getWarmMaterial;
             gameObject.GetComponent<NavMeshAgent>().destination = Fire.instance.transform.position;
             base.OnStart();

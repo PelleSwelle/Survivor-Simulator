@@ -10,7 +10,28 @@ public class Logger : MonoBehaviour
     [SerializeField] GameObject trees;
     [SerializeField] Fire fire;
 
-    [SerializeField] TMP_Text woodHeld, logsInFire, worldTempValue, bodyTempValue, energyValue, fireHealthValue, timeOfDayValue, healthValue, isVisibleToWolfValue, isDeerClose, meatHeld, rationsHeld, fishHeld;
+    [SerializeField] TMP_Text 
+    // base
+    logsInFire, 
+    fireHealthValue, 
+    
+    // survivor
+    currentTask,
+    bodyTempValue, 
+    energyValue, 
+    healthValue, 
+    
+    // world
+    worldTempValue, 
+    timeOfDayValue, 
+    
+    // animals
+    isVisibleToWolfValue, 
+    isDeerClose, 
+
+    // inventory
+    woodHeld, 
+    meatHeld, rationsHeld, fishHeld;
 
     void Awake() => instance = this;
     void Update()
@@ -24,6 +45,8 @@ public class Logger : MonoBehaviour
         displayWoodHeld();
         displayFood();
     }
+
+    public void updateTaskText(string text) => currentTask.SetText(text); 
 
     void displayFood()
     {

@@ -15,7 +15,7 @@ MonoBehaviour:
   brickName: Assets/BehaviorBricks/SurvivorBehavior.asset
   xml: "\uFEFF<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<BehaviorBricks xmlns:ref=\"urn:padaone\"
     version=\"1.0\">\r\n  <BehaviorTree id=\"0\" />\r\n  <runtimeInfo>\r\n    <BehaviorTree
-    id=\"0\" guid=\"368925dd64a09704aae650bccb69aa05\" nextId=\"32\">\r\n      <root>\r\n       
+    id=\"0\" guid=\"368925dd64a09704aae650bccb69aa05\" nextId=\"34\">\r\n      <root>\r\n       
     <RepeatDecorator id=\"1\" />\r\n      </root>\r\n      <inputParams>\r\n       
     <inputValues>\r\n          <entry name=\"getWarmMaterial\" type=\"UnityEngine.Material\"
     isBlackboard=\"False\" />\r\n          <entry name=\"deerParent\" type=\"UnityEngine.GameObject\"
@@ -47,11 +47,8 @@ MonoBehaviour:
     </inputParams>\r\n      <outputParams>\r\n        <outputValues>\r\n         
     <entry name=\"closeDeer\" type=\"UnityEngine.GameObject\" isBlackboard=\"True\"
     blackboard=\"deer\" />\r\n        </outputValues>\r\n      </outputParams>\r\n     
-    <localParams />\r\n    </ConditionEvalNode>\r\n    <ActionNode id=\"17\" action=\"attemptShootDeer\">\r\n     
-    <inputParams>\r\n        <inputValues>\r\n          <entry name=\"deerToShoot\"
-    type=\"Deer\" isBlackboard=\"False\" />\r\n          <entry name=\"Deer\" type=\"UnityEngine.GameObject\"
-    isBlackboard=\"True\" blackboard=\"deer\" />\r\n        </inputValues>\r\n     
-    </inputParams>\r\n      <outputParams />\r\n      <localParams />\r\n    </ActionNode>\r\n   
+    <localParams />\r\n    </ConditionEvalNode>\r\n    <ActionNode id=\"17\" action=\"ShootDeer\">\r\n     
+    <inputParams />\r\n      <outputParams />\r\n      <localParams />\r\n    </ActionNode>\r\n   
     <ConditionEvalNode id=\"16\" policy=\"WAIT_UNTIL_FALSE_AND_FAIL\" name=\"Survivor/IsCold\">\r\n     
     <inputParams />\r\n      <outputParams />\r\n      <localParams />\r\n    </ConditionEvalNode>\r\n   
     <ActionNode id=\"15\" action=\"survival/GetWarm\">\r\n      <inputParams>\r\n       
@@ -93,58 +90,58 @@ MonoBehaviour:
     <SequenceNode id=\"27\" />\r\n          <ConditionEvalNode id=\"28\" />\r\n         
     <ActionNode id=\"29\" />\r\n        </nodes>\r\n      </_nodes>\r\n    </BehaviorTree>\r\n   
     <RepeatDecorator id=\"1\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
-    selected=\"False\" position=\"256.4186 -69.73808\" name=\"Repeat\" description=\"Repeats
+    selected=\"False\" position=\"574.6509 23.67857\" name=\"Repeat\" description=\"Repeats
     the execution of its child node\" cardinality=\"1\" hasParent=\"False\">\r\n         
     <BehaviorTree id=\"0\" />\r\n          <RepeatDecorator id=\"1\" />\r\n       
     </data>\r\n      </_data>\r\n    </RepeatDecorator>\r\n    <PrioritySelectorNode
     id=\"2\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"202.4183 72.26219\" name=\"Priority Selector\" description=\"\" cardinality=\"1\"
+    position=\"520.6509 165.6789\" name=\"Priority Selector\" description=\"\" cardinality=\"1\"
     hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n          <PrioritySelectorNode
     id=\"2\" />\r\n          <RepeatDecorator id=\"1\" />\r\n        </data>\r\n     
     </_data>\r\n    </PrioritySelectorNode>\r\n    <ConditionEvalNode id=\"18\">\r\n     
-    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"-152.3396
-    209.6546\" name=\"Perception/IsDeerClose\" description=\"Eval\" cardinality=\"1\"
+    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"242.559
+    296.4045\" name=\"Perception/IsDeerClose\" description=\"Eval\" cardinality=\"1\"
     hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n          <ConditionEvalNode
     id=\"18\" />\r\n          <PrioritySelectorNode id=\"2\" />\r\n        </data>\r\n     
     </_data>\r\n    </ConditionEvalNode>\r\n    <ActionNode id=\"17\">\r\n      <_data>\r\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"-152.3396 209.6546\" name=\"attemptShootDeer\"
+    <data breakpoint=\"0\" selected=\"False\" position=\"242.559 296.4045\" name=\"ShootDeer\"
     description=\"\" cardinality=\"0\" hasParent=\"False\">\r\n          <BehaviorTree
     id=\"0\" />\r\n          <ActionNode id=\"17\" />\r\n        </data>\r\n     
     </_data>\r\n    </ActionNode>\r\n    <ConditionEvalNode id=\"16\">\r\n      <_data>\r\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"163.3363 223.1686\" name=\"Survivor/IsCold\"
+    <data breakpoint=\"0\" selected=\"False\" position=\"619.5689 496.5853\" name=\"Survivor/IsCold\"
     description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\r\n          <BehaviorTree
     id=\"0\" />\r\n          <ConditionEvalNode id=\"16\" />\r\n          <PrioritySelectorNode
     id=\"2\" />\r\n        </data>\r\n      </_data>\r\n    </ConditionEvalNode>\r\n   
     <ActionNode id=\"15\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"163.3363 223.1686\" name=\"survival/GetWarm\" description=\"\" cardinality=\"0\"
+    position=\"619.5689 496.5853\" name=\"survival/GetWarm\" description=\"\" cardinality=\"0\"
     hasParent=\"False\">\r\n          <BehaviorTree id=\"0\" />\r\n          <ActionNode
     id=\"15\" />\r\n        </data>\r\n      </_data>\r\n    </ActionNode>\r\n   
     <ConditionEvalNode id=\"31\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
-    selected=\"False\" position=\"663.333 381.1111\" name=\"CanCarryWood\" description=\"Eval\"
+    selected=\"False\" position=\"939.8978 467.8613\" name=\"CanCarryWood\" description=\"Eval\"
     cardinality=\"1\" hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n         
     <ConditionEvalNode id=\"31\" />\r\n          <PrioritySelectorNode id=\"2\" />\r\n       
     </data>\r\n      </_data>\r\n    </ConditionEvalNode>\r\n    <SubbehaviorNode
     id=\"30\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"380.0001 233.3333\" name=\"GatherWood\" description=\"\" cardinality=\"-1\"
+    position=\"656.5659 320.0833\" name=\"GatherWood\" description=\"\" cardinality=\"-1\"
     hasParent=\"False\">\r\n          <BehaviorTree id=\"0\" />\r\n          <SubbehaviorNode
     id=\"30\" />\r\n        </data>\r\n      </_data>\r\n    </SubbehaviorNode>\r\n   
     <ConditionEvalNode id=\"28\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
-    selected=\"False\" position=\"1063.889 415.5553\" name=\"AlwaysTrue\" description=\"Eval\"
+    selected=\"False\" position=\"1243.787 515.6388\" name=\"AlwaysTrue\" description=\"Eval\"
     cardinality=\"1\" hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n         
     <ConditionEvalNode id=\"28\" />\r\n          <PrioritySelectorNode id=\"2\" />\r\n       
     </data>\r\n      </_data>\r\n    </ConditionEvalNode>\r\n    <SequenceNode id=\"27\">\r\n     
-    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"685.0005
-    220.0001\" name=\"Sequence\" description=\"Executes all its children in sequence
+    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"864.8986
+    320.0834\" name=\"Sequence\" description=\"Executes all its children in sequence
     until all of them are successful\" cardinality=\"-1\" hasParent=\"False\">\r\n         
     <BehaviorTree id=\"0\" />\r\n          <SequenceNode id=\"27\" />\r\n       
     </data>\r\n      </_data>\r\n    </SequenceNode>\r\n    <ActionNode id=\"29\">\r\n     
-    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"646.6666
-    426.6666\" name=\"Navigation/MoveToGameObject\" description=\"Moves the game
+    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"826.5648
+    491.7501\" name=\"Navigation/MoveToGameObject\" description=\"Moves the game
     object towards a given target by using a NavMeshAgent\" cardinality=\"0\" hasParent=\"True\">\r\n         
     <BehaviorTree id=\"0\" />\r\n          <ActionNode id=\"29\" />\r\n         
     <SequenceNode id=\"27\" />\r\n        </data>\r\n      </_data>\r\n    </ActionNode>\r\n 
     </editorInfo>\r\n</BehaviorBricks>"
-  zoom: 0.6
+  zoom: 0.5
   subslist:
   - {fileID: 11400000, guid: c306fde4f48fe2840a3ab864eb83b6a8, type: 2}
   _guid: 368925dd64a09704aae650bccb69aa05

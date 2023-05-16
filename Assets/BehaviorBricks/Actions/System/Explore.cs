@@ -19,7 +19,7 @@ namespace BBUnity.Actions
         {
             currentPoi = getRandomWayPoint();
 
-            Survivor.instance.updateStatusText("exploring");
+            Logger.instance.updateTaskText("exploring");
             agent.destination = currentPoi;
 
             base.OnStart();

@@ -5,7 +5,6 @@ public class Survivor : MonoBehaviour
 {
     public static Survivor instance { get; private set; }
     public float health;
-    [SerializeField] TMP_Text statusText;
     public int heldWood, maxHeldWood = 4;
 
     bool isAlive;
@@ -23,6 +22,4 @@ public class Survivor : MonoBehaviour
     }
 
     void putWood(Fillable target) => target.add(heldWood);
-
-    public void updateStatusText(string text) => statusText.text = text;
 }
