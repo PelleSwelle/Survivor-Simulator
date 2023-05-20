@@ -11,18 +11,17 @@ namespace BBUnity.Actions
     public class Explore : GOAction
     {
         [InParam("poiParent")] Transform poiParent;
-        [InParam("navMeshAgent")] NavMeshAgent agent;
+        NavMeshAgent agent;
         Vector3 currentPoi;
         LineRenderer line;
     
         public override void OnStart()
         {
+            agent = gameObject.GetComponent<NavMeshAgent>();
             currentPoi = getRandomWayPoint();
 
             Logger.instance.updateTaskText("exploring");
             agent.destination = currentPoi;
-
-            base.OnStart();
         }
 
         public override TaskStatus OnUpdate()

@@ -203,10 +203,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1905742094757474329}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38c21a1a9da87264e95c9448501006ca, type: 3}
+  m_Script: {fileID: 11500000, guid: f4ae12fb129dc3841a0d775c80739a2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2
+  health: 0
   isNear: 0
 --- !u!65 &4217245561532423631
 BoxCollider:

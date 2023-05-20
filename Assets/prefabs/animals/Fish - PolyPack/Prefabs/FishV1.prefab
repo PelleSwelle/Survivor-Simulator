@@ -108,6 +108,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 104517609856167801}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae7b77a52b56ed24583862fe7f53d023, type: 3}
+  m_Script: {fileID: 11500000, guid: 10d49aef231cc674d864cde2ba7ab690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lake: {fileID: 0}
+  swimSpeed: 0.001
+  currentWaypoint: {fileID: 0}

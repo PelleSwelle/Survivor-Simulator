@@ -109,11 +109,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5316283342920128566}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b76fc1dc55024674494117929408d8c1, type: 3}
+  m_Script: {fileID: 11500000, guid: 29da8573ab9eee8438a895cc90fca3ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  flame: {fileID: 8271876949823620783}
+  flame: {fileID: 4726869099689012639, guid: cca45df276f7b1349b7d1952c11d1214, type: 3}
+  depletionRate: 0
+  state: 0
 --- !u!1001 &3698205317788691248
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -186,10 +188,5 @@ PrefabInstance:
 --- !u!4 &8271876949823620782 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4726869099689012638, guid: cca45df276f7b1349b7d1952c11d1214, type: 3}
-  m_PrefabInstance: {fileID: 3698205317788691248}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8271876949823620783 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4726869099689012639, guid: cca45df276f7b1349b7d1952c11d1214, type: 3}
   m_PrefabInstance: {fileID: 3698205317788691248}
   m_PrefabAsset: {fileID: 0}
