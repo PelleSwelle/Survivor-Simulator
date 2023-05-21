@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Hunger : MonoBehaviour
 {
@@ -15,19 +16,11 @@ public class Hunger : MonoBehaviour
         satiation = 50;
     }
 
-    public void eat(Eatable food)
-    {
-        Inventory inventory = GameObject.FindObjectOfType<Inventory>();
-        if (inventory.food.Contains(food))
-        {
-            inventory.get(food);
-            satiation += food.nutritionalValue;
-        }
-    }
-
     void Update() 
     {
         isHungry = satiation < hungryThreshold;
         satiation -= depletionRate * Time.deltaTime;
+        if (satiation <= 0)
+            GetComponent<Health>().value -= depletionRate * Time.deltaTime;
     }
 }

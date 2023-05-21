@@ -29,33 +29,21 @@ public class Logger : MonoBehaviour
     isDeerClose, 
 
     // inventory
-    woodHeld, waterHeld,
-    meatHeld, rationsHeld, fishHeld;
+    woodHeld;
 
     void Awake() => instance = this;
     void Update()
     {   
-        displayWaterHeld();
         displayFireHealth();
         displayTimeOfDay();
         displayWorldTemp();
         displayBodyTemp();
         displayLogsInFire();
         displayWoodHeld();
-        displayFood();
     }
 
-    void displayWaterHeld() => waterHeld.SetText(FindObjectOfType<Inventory>().unitsOfWater.ToString());
 
     public void updateTaskText(string text) => currentTask.SetText(text); 
-
-    void displayFood()
-    {
-        Inventory inventory = FindObjectOfType<Inventory>();
-        rationsHeld.SetText(FindObjectOfType<Inventory>().rations.Count.ToString());
-        meatHeld.SetText(FindObjectOfType<Inventory>().meat.Count.ToString());
-        fishHeld.SetText(FindObjectOfType<Inventory>().fish.Count.ToString());
-    }
 
     void displayWoodHeld() => woodHeld.SetText(Survivor.instance.heldWood.ToString());
     void displayLogsInFire() => logsInFire.SetText(Fire.instance.numberOfLogs.ToString());

@@ -426,7 +426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTasksPerTick: 500
-  behavior: {fileID: 11400000, guid: 2ae10e6fc94bc1042a0efba1f621af10, type: 2}
+  behavior: {fileID: 11400000, guid: cefec543fe1d8774aa0b18d5ab374a84, type: 2}
   paused: 0
   restartWhenFinished: 0
   blackboard:
@@ -446,11 +446,15 @@ MonoBehaviour:
     colorParamsNames: []
     colorParamsLostDefaultValue: 
     objectParams:
-    - {fileID: 2016349709}
     - {fileID: 99947096}
+    - {fileID: 1378570865}
+    - {fileID: 7574805799585434375, guid: 9c31fc03abab0534db720497e4c73018, type: 3}
+    - {fileID: 2016349709}
     objectParamsNames:
-    - wanderArea
     - player
+    - shootPoint
+    - bullet
+    - wanderArea
     objectParamsLostDefaultValue: 
     layerMaskParams: []
     layerMaskParamsNames: []

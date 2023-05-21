@@ -9,6 +9,6 @@ namespace BBUnity
     [Condition("HasFood")]
     public class HasFood : GOCondition
     {
-        public override bool Check() => GameObject.FindObjectOfType<Inventory>().food.Count > 0;
+        public override bool Check() => GameObject.FindObjectOfType<Inventory>().amountOfFood > 0;
     }
 }

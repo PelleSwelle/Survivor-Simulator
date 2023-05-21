@@ -16,5 +16,7 @@ public class Thirst : MonoBehaviour
     {
         isThirsty = waterLevel < thirstyThreshold;
         waterLevel -= Time.deltaTime * depletionRate;
+        if (waterLevel <= 0)
+            GetComponent<Health>().value -= depletionRate * Time.deltaTime;
     }
 }

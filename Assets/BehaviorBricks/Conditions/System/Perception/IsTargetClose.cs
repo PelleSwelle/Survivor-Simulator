@@ -11,6 +11,11 @@ namespace BBUnity.Conditions
 
         [InParam("closeDistance")] public float closeDistance;
 
-        public override bool Check() => (gameObject.transform.position - target.transform.position).sqrMagnitude < closeDistance * closeDistance;
+        public override bool Check()
+        {
+            Vector3 thisPosition = gameObject.transform.position;
+            Vector3 targetPosition = target.transform.position;
+            return (thisPosition - targetPosition).sqrMagnitude < closeDistance * closeDistance;
+        }
     }
 }

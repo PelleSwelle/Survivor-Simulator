@@ -5,7 +5,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [SerializeField] GameObject hurtPrefab;
-    public int value;
+    public float value;
     public int maxValue;
 
     void Start() => value = maxValue;

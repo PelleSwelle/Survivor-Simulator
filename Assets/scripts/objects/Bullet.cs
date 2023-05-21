@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
         {
             Debug.Log("Hit " + collision.gameObject.name);
             Health health = collision.gameObject.GetComponent<Health>();
-            health.value --;
+            health.decrease(1);
         }
     }
     void Start() => Destroy(gameObject, 2);

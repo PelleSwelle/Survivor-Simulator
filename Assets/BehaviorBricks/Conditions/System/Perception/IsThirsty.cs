@@ -8,7 +8,7 @@ namespace BBUnity.Conditions
         Thirst thirst;
         public override bool Check()
         {
-            thirst = GameObject.FindObjectOfType<Thirst>();
+            thirst = Survivor.instance.GetComponent<Thirst>();
             return thirst.isThirsty;
         }
     }

@@ -1,6 +1,7 @@
 using Pada1.BBCore;
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.AI;
 
 namespace BBUnity.Conditions
 {
@@ -11,17 +12,16 @@ namespace BBUnity.Conditions
 
         public override bool Check() 
         {
+            // return 
             deerParent = GameObject.Find("deerParent").transform;
-            if (deerParent != null)
+            foreach (Transform _deer in deerParent)
             {
-                foreach (Transform _deer in deerParent)
+                float distance = Vector3.Distance(gameObject.transform.position, _deer.position);
+                if (distance < 10)
                 {
-                    float distance = Vector3.Distance(gameObject.transform.position, _deer.position);
-                    if (distance > 30)
-                    {
-                        Logger.instance.displayDeerInRange(true);
-                        return true;
-                    }
+                    Logger.instance.displayDeerInRange(true);
+                    Survivor.instance.GetComponent<NavMeshAgent>().destination = gameObject.transform.position;
+                    return true;
                 }
             }
             Logger.instance.displayDeerInRange(false);

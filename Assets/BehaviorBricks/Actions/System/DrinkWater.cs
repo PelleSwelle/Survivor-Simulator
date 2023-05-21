@@ -16,9 +16,11 @@ namespace BBUnity.Actions
             if (thirst.waterLevel < thirst.maxWaterLevel)
             {
                 Debug.Log("drank some water");
-                thirst.waterLevel += 10;
+                GameObject.FindObjectOfType<Inventory>().unitsOfWater --;
+                thirst.waterLevel += 20;
                 return TaskStatus.COMPLETED;
             }
+            Debug.Log("no more water");
             return TaskStatus.FAILED;
         }
     }

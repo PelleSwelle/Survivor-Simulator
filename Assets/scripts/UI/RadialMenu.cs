@@ -20,7 +20,7 @@ public class RadialMenu : MonoBehaviour
         addLog.onClick.AddListener(() => addLogToFire());
         showDirectionsButton.onClick.AddListener(() => showDirections());
         takeDamageButton.onClick.AddListener(() => takeDamage());
-        eatButton.onClick.AddListener(() => eatRation());
+        eatButton.onClick.AddListener(() => eatSomething());
         drinkButton.onClick.AddListener(() => drink());
         addToBoilerButton.onClick.AddListener(() => addWaterToBoiler());
         close();
@@ -50,10 +50,10 @@ public class RadialMenu : MonoBehaviour
         Fire.instance.add();
     }
 
-    void eatRation()
+    void eatSomething()
     {
         close();
-        FindObjectOfType<Hunger>().eat(new Ration());
+        FindObjectOfType<Inventory>().eatLeastPerishableFood();
     }
 
     void takeDamage()

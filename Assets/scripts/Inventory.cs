@@ -1,13 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Inventory : MonoBehaviour
 {
+    [SerializeField] TMP_Text meatText, fishText, rationsText, waterText, woodText;
     public static Inventory instance { get; private set; }
     public List<Eatable> rations;
     public List<Eatable> meat;
     public List<Eatable> fish;
-    public List<Eatable> food;
+    public int amountOfFood;
     public int unitsOfWater;
 
     void Awake() => instance = this;
@@ -20,10 +22,12 @@ public class Inventory : MonoBehaviour
 
         unitsOfWater = 2;
 
-        food = new List<Eatable>();
-        food.AddRange(meat);
-        food.AddRange(fish);
-        food.AddRange(rations);
+    }
+
+    void Update()
+    {
+        amountOfFood = meat.Count + fish.Count + rations.Count;
+        updateUI();
     }
 
     void addRation() => rations.Add(new Ration());
@@ -34,5 +38,36 @@ public class Inventory : MonoBehaviour
     {
         if (rations.Contains(_food))
             rations.Remove(_food);
+    }
+
+    void updateUI()
+    {
+        meatText.SetText(meat.Count.ToString());
+        fishText.SetText(fish.Count.ToString());
+        rationsText.SetText(rations.Count.ToString());
+        waterText.SetText(unitsOfWater.ToString());
+        // woodText.SetText()
+    }
+
+    public Eatable eatLeastPerishableFood()
+    {
+        Eatable food = null;
+        if (rations.Count > 0)
+        {
+            food = rations[0];
+            rations.Remove(food);
+        }
+        else if (fish.Count > 0)
+        {
+            food = fish[0];
+            fish.Remove(food);
+        }
+        else if (meat.Count > 0)
+        {
+            food = meat[0];
+            fish.Remove(food);
+        }
+
+        return food;
     }
 }
