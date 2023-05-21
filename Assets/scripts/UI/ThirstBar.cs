@@ -9,8 +9,11 @@ public class ThirstBar : Bar
 
     void Update() 
     {
-        var scale = bar.localScale;
-        scale.x = Util.mapRange(0, thirst.maxWaterLevel, 0, 1, thirst.waterLevel);
-        bar.localScale = scale;
+        if (thirst.waterLevel > 0)
+        {
+            var scale = bar.localScale;
+            scale.x = Util.mapRange(0, thirst.maxWaterLevel, 0, 1, thirst.waterLevel);
+            bar.localScale = scale;
+        }
     }
 }

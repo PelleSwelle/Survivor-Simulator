@@ -19,7 +19,7 @@ namespace BBUnity.Actions
         public override TaskStatus OnUpdate()
         {
             
-            if (Survivor.instance.health <= 0)
+            if (Survivor.instance.GetComponent<Health>().value <= 0)
                 return TaskStatus.COMPLETED;
             return TaskStatus.RUNNING;
         }

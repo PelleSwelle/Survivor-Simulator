@@ -19,7 +19,7 @@ public class CameraController : MonoBehaviour
 
     void Awake() 
     {
-        state = CameraState.FREEFLY;
+        state = CameraState.ABOVE;
         instance = this;
     }
 
@@ -31,11 +31,52 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
+        if (state == CameraState.ABOVE)
+        {
+            enableLockedTranslation();
+        }
         if (state == CameraState.FREEFLY)
             enableFreeFlyControls();
 
         else if (state == CameraState.SURVIVOR)
             enableLockedControls();
+    }
+
+    void enableLockedTranslation()
+    {
+        enableTranslationOnPlane();
+        enableplaneZoom();
+    }
+
+    void enableplaneZoom()
+    {
+        Transform plane = transform.parent;
+        if (Input.mouseScrollDelta.y < 0)
+            plane.transform.position +=  new Vector3(0, scrollStrength, 0);
+        else if (Input.mouseScrollDelta.y > 0)
+            plane.transform.position -=  new Vector3(0, scrollStrength, 0);
+    }
+
+    public void enableLockedMouseLook()
+    {
+        if (axes == RotationAxes.MouseXAndY)
+        {
+            float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
+ 
+            rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
+            rotationY = Mathf.Clamp (rotationY, minimumY, maximumY);
+ 
+            transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
+        }
+        else if (axes == RotationAxes.MouseX)
+            transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivityX, 0);
+        else
+        {
+            rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
+            rotationY = Mathf.Clamp (rotationY, minimumY, maximumY);
+ 
+            transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
+        }
     }
 
     void enableLockedControls()
@@ -54,6 +95,23 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    void enableTranslationOnPlane()
+    {
+        Transform plane = transform.parent;
+
+        if (Input.GetKey(KeyCode.W))            
+            moveLocked(Vector3.forward);
+        if (Input.GetKey(KeyCode.S))            
+            moveLocked(Vector3.back);
+        if (Input.GetKey(KeyCode.A))            
+            moveLocked(Vector3.left);
+        if (Input.GetKey(KeyCode.D))            
+            moveLocked(Vector3.right);
+        if (Input.GetKey(KeyCode.LeftControl))  
+            moveLocked(Vector3.down);
+        if (Input.GetKey(KeyCode.Space))        
+            moveLocked(Vector3.up);
+    }
     
     void enableTranslationControls()
     {
@@ -73,7 +131,11 @@ public class CameraController : MonoBehaviour
 
     void move(Vector3 direction)
         => transform.position += Camera.main.transform.TransformDirection(direction * flySpeed);
-    
+    void moveLocked(Vector3 direction)
+    {
+        Vector3 lockedDirection = new Vector3(direction.x, 0, direction.z); 
+        transform.position += Camera.main.transform.TransformDirection( direction * flySpeed);
+    }
     void focusOn(Transform entity)
     {
         transform.LookAt(entity, Vector3.up);
@@ -149,5 +211,5 @@ public class CameraController : MonoBehaviour
 enum RotationAxes { MouseXAndY = 0, MouseX = 1, MouseY = 2 }
 enum CameraState
 {
-    FREEFLY, SURVIVOR
+    FREEFLY, SURVIVOR, ABOVE
 }

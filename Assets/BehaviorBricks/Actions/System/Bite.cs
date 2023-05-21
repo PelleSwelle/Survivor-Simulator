@@ -7,10 +7,11 @@ namespace BBUnity.Actions
     public class Bite : GOAction
     {
         [InParam("wolf")] Wolf wolf;
-        int biteDamage = 2;
+        int biteDamage = 20;
         public override void OnStart()
         {
-            Survivor.instance.health -= biteDamage;
+            Debug.Log("bitten by wolf");
+            Survivor.instance.GetComponent<Health>().value -= biteDamage;
             base.OnStart();
         }
 

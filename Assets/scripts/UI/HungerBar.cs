@@ -9,8 +9,11 @@ public class HungerBar : Bar
 
     void Update() 
     {
-        var scale = bar.localScale;
-        scale.x = Util.mapRange(0, hunger.maxSatiation, 0, 1, hunger.satiation);
-        bar.localScale = scale;
+        if (hunger.satiation > 0)
+        {
+            var scale = bar.localScale;
+            scale.x = Util.mapRange(0, hunger.maxSatiation, 0, 1, hunger.satiation);
+            bar.localScale = scale;
+        }
     }
 }

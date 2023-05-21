@@ -11,6 +11,7 @@ public class Inventory : MonoBehaviour
     public List<Eatable> fish;
     public int amountOfFood;
     public int unitsOfWater;
+    public int logsOfWood, maxLogs = 5;
 
     void Awake() => instance = this;
     void Start()
@@ -21,7 +22,6 @@ public class Inventory : MonoBehaviour
         addRation();
 
         unitsOfWater = 2;
-
     }
 
     void Update()

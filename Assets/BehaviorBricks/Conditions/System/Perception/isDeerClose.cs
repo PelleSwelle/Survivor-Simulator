@@ -17,7 +17,7 @@ namespace BBUnity.Conditions
             foreach (Transform _deer in deerParent)
             {
                 float distance = Vector3.Distance(gameObject.transform.position, _deer.position);
-                if (distance < 10)
+                if (distance < Survivor.instance.seeRange)
                 {
                     Logger.instance.displayDeerInRange(true);
                     Survivor.instance.GetComponent<NavMeshAgent>().destination = gameObject.transform.position;

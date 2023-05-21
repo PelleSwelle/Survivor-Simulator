@@ -10,6 +10,7 @@ TagManager:
   - deer
   - tree
   - deerWayPoint
+  - rangeRing
   layers:
   - Default
   - TransparentFX

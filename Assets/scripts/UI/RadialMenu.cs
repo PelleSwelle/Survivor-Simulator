@@ -7,7 +7,7 @@ public class RadialMenu : MonoBehaviour
 {
     public static RadialMenu instance { get; private set; }
     [SerializeField] GameObject deerPrefab, wolfPrefab;
-    [SerializeField] Button showDirectionsButton, spawnDeer, spawnWolf, addLog, takeDamageButton, eatButton, drinkButton, addToBoilerButton;
+    [SerializeField] Button spawnDeer, spawnWolf, addLog, takeDamageButton, eatButton, drinkButton, addToBoilerButton;
     
     bool isGhosting;
     GameObject heldObject;
@@ -18,7 +18,6 @@ public class RadialMenu : MonoBehaviour
         spawnDeer.onClick.AddListener(() => ghostDeer());
         spawnDeer.onClick.AddListener(() => ghostWolf());
         addLog.onClick.AddListener(() => addLogToFire());
-        showDirectionsButton.onClick.AddListener(() => showDirections());
         takeDamageButton.onClick.AddListener(() => takeDamage());
         eatButton.onClick.AddListener(() => eatSomething());
         drinkButton.onClick.AddListener(() => drink());
@@ -65,16 +64,10 @@ public class RadialMenu : MonoBehaviour
     
     void placeObject()
     {
+        close();
         Debug.Log("object placed");
         heldObject = null;
         isGhosting = false;
-    }
-
-    void showDirections()
-    {
-        close();
-        foreach(DirectionVisualizer visualizer in GameObject.FindObjectsOfType<DirectionVisualizer>())
-            visualizer.toggle();
     }
 
     void ghostDeer()

@@ -66,13 +66,13 @@ MonoBehaviour:
     <SequenceNode id=\"55\" />\r\n            </child>\r\n          </GuardAndNode>\r\n       
     </elem>\r\n      </children>\r\n      <inputParams />\r\n      <outputParams
     />\r\n      <localParams />\r\n    </PrioritySelectorNode>\r\n    <ConditionEvalNode
-    id=\"35\" policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\" name=\"general/IsHungry\">\r\n     
+    id=\"35\" policy=\"WAIT_UNTIL_FALSE_AND_FAIL\" name=\"general/IsHungry\">\r\n     
     <inputParams />\r\n      <outputParams />\r\n      <localParams />\r\n    </ConditionEvalNode>\r\n   
     <SelectorNode id=\"34\">\r\n      <children>\r\n        <elem>\r\n          <ActionNode
     id=\"36\" />\r\n        </elem>\r\n        <elem>\r\n          <PrioritySelectorNode
     id=\"38\" />\r\n        </elem>\r\n      </children>\r\n      <inputParams />\r\n     
     <outputParams />\r\n      <localParams />\r\n    </SelectorNode>\r\n    <ConditionEvalNode
-    id=\"67\" policy=\"WAIT_UNTIL_FALSE_AND_FAIL\" name=\"AlwaysTrue\">\r\n     
+    id=\"67\" policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\" name=\"AlwaysTrue\">\r\n     
     <inputParams />\r\n      <outputParams />\r\n      <localParams />\r\n    </ConditionEvalNode>\r\n   
     <ActionNode id=\"66\" action=\"explore\">\r\n      <inputParams>\r\n        <inputValues>\r\n         
     <entry name=\"poiParent\" type=\"UnityEngine.Transform\" isBlackboard=\"True\"
