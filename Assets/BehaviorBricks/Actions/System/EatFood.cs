@@ -14,28 +14,28 @@ namespace BBUnity.Actions
             List<Eatable> availableFood;
             Hunger hunger;
             Eatable foodToEat;
+            bool hasFoodToEat;
 
             public override void OnStart()
             {
                 inventory = GameObject.FindObjectOfType<Inventory>();
                 hunger = GameObject.FindObjectOfType<Hunger>();
                 availableFood = inventory.food;
+                hasFoodToEat = inventory.food.Count > 0;
             }
 
             public override TaskStatus OnUpdate()
             {
-                if (availableFood.Count <= 0)
-                {
-                    Debug.Log("no more food");
-                    return TaskStatus.FAILED;
-                }
-                else 
+                if (hasFoodToEat)
                 {
                     foodToEat = inventory.food[Random.Range(0, inventory.food.Count)];
                     hunger.eat(foodToEat);
                     Debug.Log("ate some food");
                     return TaskStatus.COMPLETED;
+                    
                 }
+                Debug.Log("no more food");
+                return TaskStatus.FAILED;
             }
         }
     }

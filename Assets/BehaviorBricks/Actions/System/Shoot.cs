@@ -1,5 +1,6 @@
     using Pada1.BBCore;           // Code attributes
     using Pada1.BBCore.Tasks;     // TaskStatus
+    using UnityEngine;
  
     [Action("survival/Shoot")]
     public class Shoot : ShootOnce
@@ -14,7 +15,9 @@
                 ++elapsed;
                 elapsed %= delay;
                 if (elapsed != 0)
+                {
                     return TaskStatus.RUNNING;
+                }
             }
  
             base.OnUpdate();

@@ -59,7 +59,7 @@ public class RadialMenu : MonoBehaviour
     void takeDamage()
     {
         close();
-        FindObjectOfType<Health>().decrease(10);
+        Survivor.instance.GetComponent<Health>().decrease(10);
     }
 
     

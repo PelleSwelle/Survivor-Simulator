@@ -78,6 +78,7 @@ GameObject:
   - component: {fileID: 4217245561532423631}
   - component: {fileID: 1137884234565581087}
   - component: {fileID: 5620879867149322671}
+  - component: {fileID: 5821069861285367274}
   m_Layer: 0
   m_Name: deer
   m_TagString: Untagged
@@ -93,7 +94,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1905742094757474329}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 121.38942, y: 84.05, z: 142.09076}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -121,7 +122,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0.58
+  m_BaseOffset: 1.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &1807588525300530455
@@ -206,8 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4ae12fb129dc3841a0d775c80739a2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  isNear: 0
+  isAlive: 0
 --- !u!65 &4217245561532423631
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -216,11 +216,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1905742094757474329}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.3320541, y: 2.5938797, z: 3.6985016}
-  m_Center: {x: 1.0544167, y: 1.5849419, z: 1.3492508}
+  m_Size: {x: 1.2210772, y: 2.6462367, z: 3.6985016}
+  m_Center: {x: -0.011945456, y: -0.2826258, z: 1.3492508}
 --- !u!114 &1137884234565581087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,6 +332,21 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &5821069861285367274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905742094757474329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff62d04151abb6c44b96b2c6abd6d05a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hurtPrefab: {fileID: 2605725060462357952, guid: 02a8121e20c685448aa17be0d1a097bb, type: 3}
+  value: 0
+  maxValue: 2
 --- !u!1 &2229226208855836560
 GameObject:
   m_ObjectHideFlags: 0
@@ -1620,7 +1635,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8578983323291816281}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.0209956, y: 1.8941021, z: -0.1418128}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 94.903465, y: 94.903465, z: 94.903465}
   m_ConstrainProportionsScale: 0
   m_Children:

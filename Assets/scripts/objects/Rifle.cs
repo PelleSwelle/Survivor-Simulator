@@ -44,27 +44,27 @@ public class Rifle : MonoBehaviour
         transform.GetChild(0).transform.localScale = new Vector3(range, range, range);
     }
 
-    public void shoot() 
-    {
-        if (isLoaded)
-        {
-            Debug.Log("shot");
-            GameObject bullet = getBullet();
-            Rigidbody rigidBody = bullet.GetComponent<Rigidbody>();
-            isLoaded = false;
-            audioSource.Play();
+    // public void shoot() 
+    // {
+    //     if (isLoaded)
+    //     {
+    //         Debug.Log("shot");
+    //         GameObject bullet = getBullet();
+    //         Rigidbody rigidBody = bullet.GetComponent<Rigidbody>();
+    //         isLoaded = false;
+    //         audioSource.Play();
             
-            rigidBody.AddForce(Vector3.forward * shootForce, ForceMode.Impulse);
+    //         rigidBody.AddForce(Vector3.forward * shootForce, ForceMode.Impulse);
 
-            if (Vector3.Distance(transform.position, bullet.transform.position) > range)
-            Destroy(bullet);
+    //         if (Vector3.Distance(transform.position, bullet.transform.position) > range)
+    //         Destroy(bullet);
             
-            ammo--;
-            reload();
-        }
+    //         ammo--;
+    //         reload();
+    //     }
         
         
-    }
+    // }
 
     void reload()
     {

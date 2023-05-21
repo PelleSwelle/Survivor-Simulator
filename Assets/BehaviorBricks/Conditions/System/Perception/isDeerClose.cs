@@ -7,7 +7,6 @@ namespace BBUnity.Conditions
     [Condition("Perception/IsDeerClose")]
     public class IsDeerClose : GOCondition
     {
-        [OutParam("closeDeer")] Transform deer;
         public Transform deerParent;
 
         public override bool Check() 
@@ -17,9 +16,9 @@ namespace BBUnity.Conditions
             {
                 foreach (Transform _deer in deerParent)
                 {
-                    if ((gameObject.transform.position - _deer.position).sqrMagnitude < Rifle.instance.range * Rifle.instance.range)
+                    float distance = Vector3.Distance(gameObject.transform.position, _deer.position);
+                    if (distance > 30)
                     {
-                        deer = _deer;
                         Logger.instance.displayDeerInRange(true);
                         return true;
                     }

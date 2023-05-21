@@ -10,10 +10,11 @@
         [InParam("shootPoint")] public Transform shootPoint;
         [InParam("bullet")] public GameObject bullet;
         [InParam("velocity", DefaultValue = 30f)] public float velocity;
- 
+       
         public override TaskStatus OnUpdate()
         {
-            if (Rifle.instance.ammo > 0)
+            bool hasAmmo = Survivor.instance.ammo > 0;
+            if (hasAmmo)
             {
                 GameObject newBullet = GameObject.Instantiate(
                     bullet, shootPoint.position,
@@ -24,6 +25,7 @@
                     newBullet.AddComponent<Rigidbody>();
     
                 newBullet.GetComponent<Rigidbody>().velocity = velocity * shootPoint.forward;
+                Debug.Log("bang!");
                 return TaskStatus.COMPLETED;
             }
             return TaskStatus.FAILED;

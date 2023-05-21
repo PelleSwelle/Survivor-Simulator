@@ -1,28 +1,31 @@
 using UnityEngine;
+using System.Collections;
+
 public class Deer : MonoBehaviour
 {
-    public int health;
-    public bool isNear;
-    BehaviorExecutor behaviorExecutor;
-    void Awake()
+    public bool isAlive;
+    Health health;
+    int amountOfMeat = 5;
+    void Start() => health = GetComponent<Health>();
+    void Update()
     {
-        behaviorExecutor = GetComponent<BehaviorExecutor>();
-        GameObject wanderArea = GameObject.Find("terrain");
-        behaviorExecutor.SetBehaviorParam("area", wanderArea);
+        if (health.value <= 0) 
+        { 
+            isAlive = false;
+
+            StartCoroutine(disappearAfter2Seconds()); 
+        }
     }
-    void Start() => health = 2;
 
-
-    // bool calculateIsNear() 
-    // {
-    //     Rifle rifle = Rifle.instance;
-    //     return Vector3.Distance(transform.position, rifle.transform.position) < rifle.range;
-    // }
-
-
-    
-    void OnCollisionEnter(Collision collision) 
-    { 
-        if (collision.gameObject.tag == "bullet") { health--; } 
+    IEnumerator disappearAfter2Seconds()
+    {
+        yield return new WaitForSeconds(2);
+        Inventory inventory = FindObjectOfType<Inventory>();
+        for (int i = 0; i < amountOfMeat; i++)
+        {
+            inventory.meat.Add(new Meat());
+        }
+        Debug.Log("added 5 meat to inventory");
+        Destroy(this.gameObject);
     }
 }

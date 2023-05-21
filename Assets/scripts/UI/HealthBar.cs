@@ -3,7 +3,12 @@ using UnityEngine;
 public class HealthBar : Bar
 {
     Health health;
-    void Start() => health = FindObjectOfType<Health>();
+    void Start()
+    {
+
+        health = Survivor.instance.GetComponent<Health>();
+    }
+    
 
     void Update() 
     {

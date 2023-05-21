@@ -34,8 +34,6 @@ public class Controls : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.R))
             Rifle.instance.toggleRangeIsVisible();
-        if (Input.GetKeyUp(KeyCode.P))
-            Rifle.instance.shoot();
     }
 
     void enableWeatherControls()
