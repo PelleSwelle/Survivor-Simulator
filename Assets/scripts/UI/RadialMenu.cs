@@ -112,6 +112,6 @@ public class RadialMenu : MonoBehaviour
     public void close()
     {
         gameObject.SetActive(false);
-        CameraController.instance.enableMouseLook();
+        CameraController.instance.freeMouseLook();
     }
 }

@@ -26,6 +26,7 @@
     
                 newBullet.GetComponent<Rigidbody>().velocity = velocity * shootPoint.forward;
                 Debug.Log("bang!");
+                Survivor.instance.GetComponent<AudioSource>().Play();
                 return TaskStatus.COMPLETED;
             }
             return TaskStatus.FAILED;

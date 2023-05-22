@@ -11,6 +11,7 @@ public class CameraController : MonoBehaviour
     sensitivityX = 15f, sensitivityY = 15f,
     minimumX = -360f, maximumX = 360f,
     minimumY = -60f, maximumY = 60f,
+    downMinimumY = -60f, downMaximumY = -5f,
     rotationY = 0f;
     
     RotationAxes axes = RotationAxes.MouseXAndY;
@@ -32,23 +33,41 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         if (state == CameraState.ABOVE)
-        {
-            enableLockedTranslation();
-        }
+            planeControls();
         if (state == CameraState.FREEFLY)
-            enableFreeFlyControls();
+            freeFlyControls();
 
         else if (state == CameraState.SURVIVOR)
-            enableLockedControls();
+            orbitControls();
     }
 
-    void enableLockedTranslation()
+    void planeControls()
     {
-        enableTranslationOnPlane();
-        enableplaneZoom();
+        translateOnPlane();
+        planeZoom();
+        mouseLookFromPlane();
     }
 
-    void enableplaneZoom()
+    void orbitControls()
+    {
+        focusOn(Survivor.instance.transform);
+        if (!RadialMenu.instance.isActiveAndEnabled)
+        {
+            orbitZoom();
+            orbit();
+        }
+    }
+
+    void freeFlyControls()
+    {
+        if (!RadialMenu.instance.isActiveAndEnabled)
+        {
+            fly();
+            freeMouseLook();
+        }
+    }
+
+    void planeZoom()
     {
         Transform plane = transform.parent;
         if (Input.mouseScrollDelta.y < 0)
@@ -57,14 +76,14 @@ public class CameraController : MonoBehaviour
             plane.transform.position -=  new Vector3(0, scrollStrength, 0);
     }
 
-    public void enableLockedMouseLook()
+    public void mouseLookFromPlane()
     {
         if (axes == RotationAxes.MouseXAndY)
         {
             float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
  
             rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
-            rotationY = Mathf.Clamp (rotationY, minimumY, maximumY);
+            rotationY = Mathf.Clamp (rotationY, downMinimumY, downMaximumY);
  
             transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
         }
@@ -73,47 +92,29 @@ public class CameraController : MonoBehaviour
         else
         {
             rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
-            rotationY = Mathf.Clamp (rotationY, minimumY, maximumY);
+            rotationY = Mathf.Clamp (rotationY, downMinimumY, downMaximumY);
  
             transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
         }
     }
 
-    void enableLockedControls()
+    void translateOnPlane()
     {
-        focusOn(Survivor.instance.transform);
-        enableZoom();
-        enableOrbit();
-    }
-
-    void enableFreeFlyControls()
-    {
-        if (!RadialMenu.instance.isActiveAndEnabled)
-        {
-            enableTranslationControls();
-            enableMouseLook();
-        }
-    }
-
-    void enableTranslationOnPlane()
-    {
-        Transform plane = transform.parent;
-
         if (Input.GetKey(KeyCode.W))            
-            moveLocked(Vector3.forward);
+            moveOnPlane(Vector3.forward);
         if (Input.GetKey(KeyCode.S))            
-            moveLocked(Vector3.back);
+            moveOnPlane(Vector3.back);
         if (Input.GetKey(KeyCode.A))            
-            moveLocked(Vector3.left);
+            moveOnPlane(Vector3.left);
         if (Input.GetKey(KeyCode.D))            
-            moveLocked(Vector3.right);
+            moveOnPlane(Vector3.right);
         if (Input.GetKey(KeyCode.LeftControl))  
-            moveLocked(Vector3.down);
+            moveOnPlane(Vector3.down);
         if (Input.GetKey(KeyCode.Space))        
-            moveLocked(Vector3.up);
+            moveOnPlane(Vector3.up);
     }
     
-    void enableTranslationControls()
+    void fly()
     {
         if (Input.GetKey(KeyCode.W))            
             move(Vector3.forward);
@@ -131,17 +132,14 @@ public class CameraController : MonoBehaviour
 
     void move(Vector3 direction)
         => transform.position += Camera.main.transform.TransformDirection(direction * flySpeed);
-    void moveLocked(Vector3 direction)
+    void moveOnPlane(Vector3 direction)
     {
         Vector3 lockedDirection = new Vector3(direction.x, 0, direction.z); 
-        transform.position += Camera.main.transform.TransformDirection( direction * flySpeed);
+        transform.position += Camera.main.transform.TransformDirection( lockedDirection * flySpeed);
     }
-    void focusOn(Transform entity)
-    {
-        transform.LookAt(entity, Vector3.up);
-    }
+    void focusOn(Transform entity) => transform.LookAt(entity, Vector3.up);
 
-    void enableZoom()
+    void orbitZoom()
     {
         if (Input.mouseScrollDelta.y < 0)
             distanceToTarget += scrollStrength;
@@ -149,7 +147,7 @@ public class CameraController : MonoBehaviour
             distanceToTarget -= scrollStrength;
     }
 
-    void enableOrbit()
+    void orbit()
     {
         if (Input.GetKey(KeyCode.LeftControl))
         {
@@ -160,27 +158,7 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    List<Transform> getCameraTargetable()
-    {
-        List<Transform> targets = new List<Transform>();
-        // add survivor
-        targets.Add(Survivor.instance.transform);
-        
-        // add lakes with fish
-        foreach (Transform lake in GameObject.Find("lakes").transform)
-            targets.Add(lake);
-
-        // add deer
-        foreach (Transform deer in GameObject.Find("deer").transform)
-            targets.Add(deer);
-
-        // add wolves
-        foreach (Transform wolf in GameObject.Find("wolves").transform)
-            targets.Add(wolf);
-        return targets;
-    }
- 
-    public void enableMouseLook ()
+    public void freeMouseLook ()
     {
         if (axes == RotationAxes.MouseXAndY)
         {
@@ -202,10 +180,7 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    public void disableMouseLook()
-    {
-        transform.localEulerAngles = transform.localEulerAngles;
-    }
+    public void disableMouseLook() => transform.localEulerAngles = transform.localEulerAngles;
 }
 
 enum RotationAxes { MouseXAndY = 0, MouseX = 1, MouseY = 2 }

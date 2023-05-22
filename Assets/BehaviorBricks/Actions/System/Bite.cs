@@ -11,6 +11,7 @@ namespace BBUnity.Actions
         public override void OnStart()
         {
             Debug.Log("bitten by wolf");
+            this.gameObject.GetComponent<AudioSource>().Play();
             Survivor.instance.GetComponent<Health>().value -= biteDamage;
             base.OnStart();
         }
