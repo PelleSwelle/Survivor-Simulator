@@ -5,8 +5,8 @@ using UnityEngine.AI;
 
 public class Visualizer : MonoBehaviour
 {
-    [SerializeField] Toggle destinationsToggle, sightToggle;
-    bool destinationsVisible, rangesVisible;
+    [SerializeField] Toggle destinationsToggle, sightToggle, poisToggle;
+    bool destinationsVisible, rangesVisible, poisVisible;
 
     // get all moving entities
     Survivor survivor;
@@ -14,13 +14,17 @@ public class Visualizer : MonoBehaviour
     List<Wolf> wolves;
     List<Deer> deers;
     List<GameObject> rangeRings;
+    List<GameObject> pois;
 
     void Start()
     {
-        rangeRings = new List<GameObject>();
-        rangeRings.AddRange(GameObject.FindGameObjectsWithTag("rangeRing"));
+        
         destinationsVisible = false;
         rangesVisible = false;
+        poisVisible = false;
+
+        
+
 
         destinationsToggle.onValueChanged.AddListener( delegate {
             toggleDestinationsVisible();
@@ -29,6 +33,10 @@ public class Visualizer : MonoBehaviour
         sightToggle.onValueChanged.AddListener( delegate {
             toggleRangesVisible();
         });
+
+        poisToggle.onValueChanged.AddListener( delegate {
+            togglePoisVisible();
+        });
         fillLists();
     }
 
@@ -36,22 +44,9 @@ public class Visualizer : MonoBehaviour
     {
         if (destinationsVisible)
         {
-            // ********** DEER **********
-            foreach (Deer deer in deers)
-            {
-                LineRenderer line = deer.GetComponent<LineRenderer>();
-                NavMeshAgent agent = deer.GetComponent<NavMeshAgent>();
-
-                setLinePositions(agent, line, Color.blue);
-            }
-
-            // ********** WOLVES **********
-            foreach (Wolf wolf in wolves)
-            {
-                LineRenderer line = wolf.GetComponent<LineRenderer>();
-                NavMeshAgent agent = wolf.GetComponent<NavMeshAgent>();
-                setLinePositions(agent, line, Color.red);
-            }
+            setDeerLines();
+            setWolfLines();
+            setSurvivorLine();
         }
 
         if (rangesVisible)
@@ -63,6 +58,43 @@ public class Visualizer : MonoBehaviour
         {
             foreach (GameObject ring in rangeRings)
                 ring.GetComponent<MeshRenderer>().enabled = false;
+        }
+
+        if (poisVisible)
+        {
+            foreach (GameObject poi in pois)
+            {
+                MeshRenderer mesh = poi.GetComponent<MeshRenderer>();
+                mesh.enabled = !mesh.enabled;
+            }
+        }
+    }
+
+    void setSurvivorLine()
+    {
+        LineRenderer line = Survivor.instance.GetComponent<LineRenderer>();
+        NavMeshAgent agent = Survivor.instance.GetComponent<NavMeshAgent>();
+
+        setLinePositions(agent, line, Color.green);
+    }
+
+    void setWolfLines()
+    {
+        foreach (Wolf wolf in wolves)
+        {
+            LineRenderer line = wolf.GetComponent<LineRenderer>();
+            NavMeshAgent agent = wolf.GetComponent<NavMeshAgent>();
+            setLinePositions(agent, line, Color.red);
+        }
+    }
+    void setDeerLines()
+    {
+        foreach (Deer deer in deers)
+        {
+            LineRenderer line = deer.GetComponent<LineRenderer>();
+            NavMeshAgent agent = deer.GetComponent<NavMeshAgent>();
+
+            setLinePositions(agent, line, Color.blue);
         }
     }
     void setLinePositions(NavMeshAgent agent, LineRenderer line, Color color)
@@ -77,25 +109,26 @@ public class Visualizer : MonoBehaviour
         else
             throw new System.Exception("no destination set");
     }
-    
-    void toggleDestinationsVisible()
-    {
-        destinationsVisible = !destinationsVisible;
-        
-    }
-    void toggleRangesVisible()
-    {
-        rangesVisible = !rangesVisible;
 
-    }
+    void togglePoisVisible() => poisVisible = !poisVisible;
+    
+    void toggleDestinationsVisible() => destinationsVisible = !destinationsVisible;
+    void toggleRangesVisible() => rangesVisible = !rangesVisible;
 
     void fillLists()
     {
         deers = new List<Deer>();
         wolves = new List<Wolf>();
+        rangeRings = new List<GameObject>();
+        pois = new List<GameObject>();
+
+        rangeRings.AddRange(GameObject.FindGameObjectsWithTag("rangeRing"));
+
+        pois.AddRange(GameObject.FindGameObjectsWithTag("pointOfInterest"));
         
         foreach (Transform deerTransform in deerParent)
             deers.Add(deerTransform.GetComponent<Deer>());
+
         foreach (Transform wolfTransform in wolvesParent)
             wolves.Add(wolfTransform.GetComponent<Wolf>());
     }

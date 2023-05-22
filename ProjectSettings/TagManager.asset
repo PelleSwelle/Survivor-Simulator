@@ -11,6 +11,7 @@ TagManager:
   - tree
   - deerWayPoint
   - rangeRing
+  - pointOfInterest
   layers:
   - Default
   - TransparentFX
