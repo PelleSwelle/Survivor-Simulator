@@ -26,7 +26,7 @@ namespace BBUnity.Actions
             {
                 if (hasFoodToEat)
                 {
-                    inventory.eatLeastPerishableFood();
+                    Survivor.instance.GetComponent<Hunger>().satiation += inventory.getLeastPerishableFood().nutritionalValue;
                     Debug.Log("ate some food");
                     return TaskStatus.COMPLETED;
                 }

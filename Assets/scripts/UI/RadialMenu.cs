@@ -52,7 +52,7 @@ public class RadialMenu : MonoBehaviour
     void eatSomething()
     {
         close();
-        FindObjectOfType<Inventory>().eatLeastPerishableFood();
+        FindObjectOfType<Inventory>().getLeastPerishableFood();
     }
 
     void takeDamage()

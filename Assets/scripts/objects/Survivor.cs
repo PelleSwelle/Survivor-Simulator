@@ -6,7 +6,7 @@ public class Survivor : MonoBehaviour
     public static Survivor instance { get; private set; }
     public int heldWood, maxHeldWood = 4;
     public int ammo;
-    public float seeRange = 20;
+    public float seeRange = 10;
     public GameObject rangeRing;
 
     bool isAlive;

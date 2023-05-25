@@ -15,9 +15,7 @@
                 ++elapsed;
                 elapsed %= delay;
                 if (elapsed != 0)
-                {
                     return TaskStatus.RUNNING;
-                }
             }
  
             base.OnUpdate();

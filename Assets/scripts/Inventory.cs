@@ -49,7 +49,7 @@ public class Inventory : MonoBehaviour
         // woodText.SetText()
     }
 
-    public Eatable eatLeastPerishableFood()
+    public Eatable getLeastPerishableFood()
     {
         Eatable food = null;
         if (rations.Count > 0)

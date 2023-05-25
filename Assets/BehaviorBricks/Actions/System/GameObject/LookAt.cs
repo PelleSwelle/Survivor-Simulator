@@ -25,8 +25,7 @@ namespace BBUnity.Actions
         {
             if (target == null)
                 return TaskStatus.FAILED;
-            Vector3 lookPos = targetTransform.position;
-            gameObject.transform.LookAt(lookPos);
+            gameObject.transform.LookAt(targetTransform.position);
             return TaskStatus.COMPLETED;
         }
     }

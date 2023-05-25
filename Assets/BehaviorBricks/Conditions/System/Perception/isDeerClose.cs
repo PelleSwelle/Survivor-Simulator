@@ -12,7 +12,6 @@ namespace BBUnity.Conditions
 
         public override bool Check() 
         {
-            // return 
             deerParent = GameObject.Find("deerParent").transform;
             foreach (Transform _deer in deerParent)
             {
@@ -20,7 +19,6 @@ namespace BBUnity.Conditions
                 if (distance < Survivor.instance.seeRange)
                 {
                     Logger.instance.displayDeerInRange(true);
-                    Survivor.instance.GetComponent<NavMeshAgent>().destination = gameObject.transform.position;
                     return true;
                 }
             }

@@ -1771,15 +1771,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4346233700904294, guid: 99021c869d4927145b9ede1a0c2339af, type: 3}
       propertyPath: m_LocalScale.x
-      value: 40
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4346233700904294, guid: 99021c869d4927145b9ede1a0c2339af, type: 3}
       propertyPath: m_LocalScale.y
-      value: 40
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4346233700904294, guid: 99021c869d4927145b9ede1a0c2339af, type: 3}
       propertyPath: m_LocalScale.z
-      value: 40
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4346233700904294, guid: 99021c869d4927145b9ede1a0c2339af, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2767,7 +2767,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 292461168}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.3660278}
+  m_LocalPosition: {x: 0, y: 0, z: 2.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6106,7 +6106,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 93.24402, y: 132.34927}
+  m_AnchoredPosition: {x: 93.24402, y: 27.73}
   m_SizeDelta: {x: 186.49, y: 314.5594}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &684273101
@@ -9794,6 +9794,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1905742094757474329, guid: 604b50859f03dff4aa754a77e13b5e10, type: 3}
       propertyPath: m_Name
+      value: deer
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905742094757474329, guid: 604b50859f03dff4aa754a77e13b5e10, type: 3}
+      propertyPath: m_TagString
       value: deer
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -15338,7 +15342,7 @@ MonoBehaviour:
   heldWood: 0
   maxHeldWood: 4
   ammo: 0
-  seeRange: 40
+  seeRange: 20
   rangeRing: {fileID: 324059766}
 --- !u!114 &1504040087
 MonoBehaviour:
