@@ -10,9 +10,10 @@ public class EmptyState : BoilerBaseState
         boiler.statusText.SetText("empty");
     }
 
-    public override void OnCollisionEnter(BoilerStateManager boiler)
+    public override void OnCollisionEnter(BoilerStateManager boiler, Collision collision)
     {
-        boiler.switchState(boiler.dirty); // until now we prented that survivor just picks up some snow and throws it in.
+        if (collision.gameObject.CompareTag("Player"))
+            boiler.switchState(boiler.dirty); // until now we prented that survivor just picks up some snow and throws it in.
     }
 
     public override void UpdateState(BoilerStateManager boiler)

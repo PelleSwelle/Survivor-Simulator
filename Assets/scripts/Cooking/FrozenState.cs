@@ -10,9 +10,10 @@ public class FrozenState : BoilerBaseState
         boiler.statusText.SetText("frozen");
     }
 
-    public override void OnCollisionEnter(BoilerStateManager boiler)
+    public override void OnCollisionEnter(BoilerStateManager boiler, Collision collision)
     {
-        Debug.Log("the water is frozen. You need to heat it up first");
+        if (collision.gameObject.CompareTag("Player"))
+            Debug.Log("the water is frozen. You need to heat it up first");
     }
 
     public override void UpdateState(BoilerStateManager boiler)

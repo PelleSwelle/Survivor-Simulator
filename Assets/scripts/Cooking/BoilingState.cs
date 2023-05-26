@@ -10,10 +10,13 @@ public class BoilingState : BoilerBaseState
         boiler.statusText.SetText("boiling");
     }
 
-    public override void OnCollisionEnter(BoilerStateManager boiler)
+    public override void OnCollisionEnter(BoilerStateManager boiler, Collision collision)
     {
-        boiler.takeWater();
-        boiler.switchState(boiler.empty); // TODO: actually put it in inventory
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            boiler.takeWater();
+            boiler.switchState(boiler.empty);
+        }
     }
 
     public override void UpdateState(BoilerStateManager boiler)

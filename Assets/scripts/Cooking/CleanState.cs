@@ -14,10 +14,13 @@ public class CleanState : BoilerBaseState
         boiler.statusText.SetText("clean");
     }
 
-    public override void OnCollisionEnter(BoilerStateManager boiler)
+    public override void OnCollisionEnter(BoilerStateManager boiler, Collision collision)
     {
-        boiler.takeWater();
-        boiler.switchState(boiler.empty);
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            boiler.takeWater();
+            boiler.switchState(boiler.empty);
+        }
     }
 
     public override void UpdateState(BoilerStateManager boiler)

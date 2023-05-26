@@ -9,9 +9,10 @@ public class DirtyState : BoilerBaseState
     float elapsedTime = 0;
     public override void EnterState(BoilerStateManager boiler) => setMaterial(boiler, boiler.dirtyMaterial);
 
-    public override void OnCollisionEnter(BoilerStateManager boiler)
+    public override void OnCollisionEnter(BoilerStateManager boiler, Collision collision)
     {
-        Debug.Log("the water is dirty. You can't drink this");
+        if (collision.gameObject.CompareTag("Player"))
+            Debug.Log("the water is dirty. You can't drink this");
     }
 
     public override void UpdateState(BoilerStateManager boiler)

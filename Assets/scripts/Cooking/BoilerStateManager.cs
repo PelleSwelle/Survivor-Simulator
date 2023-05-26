@@ -21,6 +21,11 @@ public class BoilerStateManager : MonoBehaviour
         currentState.EnterState(this);
     }
 
+    void OnCollisionEnter(Collision collision)
+    {
+        currentState.OnCollisionEnter(this, collision);
+    }
+
     void Update()
     {
         currentState.UpdateState(this);
@@ -32,5 +37,11 @@ public class BoilerStateManager : MonoBehaviour
         currentState.EnterState(this);
     }
 
-    public void takeWater() => GameObject.FindObjectOfType<Inventory>().unitsOfWater ++;
+    public void takeWater()
+    {
+        Thirst thirst = Survivor.instance.GetComponent<Thirst>();
+        thirst.waterLevel = thirst.maxWaterLevel;
+        Debug.Log("took some water from the boiler.");
+        GameObject.FindObjectOfType<Inventory>().unitsOfWater ++;
+    }
 }

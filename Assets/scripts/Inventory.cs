@@ -21,7 +21,7 @@ public class Inventory : MonoBehaviour
         fish = new List<Eatable>();
         addRation();
 
-        unitsOfWater = 2;
+        unitsOfWater = 0;
     }
 
     void Update()
