@@ -1,14 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
     [SerializeField] TMP_Text meatText, fishText, rationsText, waterText, woodText;
+    [SerializeField] Button meatUp, meatDown, fishUp, fishDown, rationsUp, rationsDown, waterUp, waterDown;
     public static Inventory instance { get; private set; }
-    public List<Eatable> rations;
-    public List<Eatable> meat;
-    public List<Eatable> fish;
+    public List<Eatable> rations, meat, fish;
     public int amountOfFood;
     public int unitsOfWater;
     public int logsOfWood, maxLogs = 5;
@@ -21,9 +21,45 @@ public class Inventory : MonoBehaviour
         fish = new List<Eatable>();
         addRation();
 
+        meatUp.onClick.AddListener(() => addMeat());
+        meatDown.onClick.AddListener(() => takeMeat());
+
+        fishUp.onClick.AddListener(() => addFish());
+        fishDown.onClick.AddListener(() => takeFish());
+        
+        rationsUp.onClick.AddListener(() => addRation());
+        rationsDown.onClick.AddListener(() => takeRation());
+        
+        waterUp.onClick.AddListener(() => addWater());
+        waterDown.onClick.AddListener(() => takeWater());
+
         unitsOfWater = 0;
     }
 
+
+
+    void takeMeat()
+    {
+        if (meat.Count > 0)
+            meat.Remove(meat[meat.Count-1]);
+    }
+    void takeWater()
+    {
+        if (unitsOfWater > 0)
+            unitsOfWater --;
+    }
+
+    void addWater() => unitsOfWater ++;
+    void takeRation()
+    {
+        if (rations.Count > 0)
+            rations.Remove(rations[rations.Count-1]);
+    }
+    void takeFish()
+    {
+        if (fish.Count > 0)
+            fish.Remove(fish[fish.Count-1]);
+    }
     void Update()
     {
         amountOfFood = meat.Count + fish.Count + rations.Count;
@@ -31,14 +67,11 @@ public class Inventory : MonoBehaviour
     }
 
     void addRation() => rations.Add(new Ration());
-    void addMeat() => meat.Add(new Meat());
-    void addFish() => fish.Add(new Fish());
-
-    public void get(Eatable _food)
+    void addMeat()
     {
-        if (rations.Contains(_food))
-            rations.Remove(_food);
+        meat.Add(new Meat());
     }
+    void addFish() => fish.Add(new Fish());
 
     void updateUI()
     {
