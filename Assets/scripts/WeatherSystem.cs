@@ -16,7 +16,6 @@ public class WeatherSystem : MonoBehaviour
     public void storm()
     {
         disableAll();
-        // temperature = -20;
         heavyStorm.SetActive(true);
         fxAudio.SetActive(true);
         Debug.Log("Storm");

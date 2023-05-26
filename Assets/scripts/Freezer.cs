@@ -4,7 +4,7 @@ public class Freezer : MonoBehaviour
 {
     public float bodyTemp;
     float depletionRate;
-    public float freezingTemp = 36;
+    public float freezingTemp = 36, maxTemp = 38;
     bool isNearHeatSource;
     
     void Start()
