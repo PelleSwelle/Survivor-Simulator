@@ -48,7 +48,7 @@ MonoBehaviour:
     <ActionNode id=\"66\" />\r\n            </child>\r\n          </GuardAndNode>\r\n       
     </elem>\r\n      </children>\r\n      <inputParams />\r\n      <outputParams
     />\r\n      <localParams />\r\n    </PrioritySelectorNode>\r\n    <ConditionEvalNode
-    id=\"65\" policy=\"WAIT_UNTIL_FALSE_AND_FAIL\" name=\"Perception/IsDeerClose\">\r\n     
+    id=\"65\" policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\" name=\"Perception/IsDeerClose\">\r\n     
     <inputParams />\r\n      <outputParams />\r\n      <localParams />\r\n    </ConditionEvalNode>\r\n   
     <SequenceNode id=\"64\">\r\n      <children>\r\n        <elem>\r\n          <ActionNode
     id=\"62\" />\r\n        </elem>\r\n        <elem>\r\n          <ActionNode id=\"60\"
@@ -72,7 +72,7 @@ MonoBehaviour:
     id=\"36\" />\r\n        </elem>\r\n        <elem>\r\n          <PrioritySelectorNode
     id=\"38\" />\r\n        </elem>\r\n      </children>\r\n      <inputParams />\r\n     
     <outputParams />\r\n      <localParams />\r\n    </SelectorNode>\r\n    <ConditionEvalNode
-    id=\"67\" policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\" name=\"AlwaysTrue\">\r\n     
+    id=\"67\" policy=\"WAIT_UNTIL_FALSE_AND_FAIL\" name=\"AlwaysTrue\">\r\n     
     <inputParams />\r\n      <outputParams />\r\n      <localParams />\r\n    </ConditionEvalNode>\r\n   
     <ActionNode id=\"66\" action=\"explore\">\r\n      <inputParams>\r\n        <inputValues>\r\n         
     <entry name=\"poiParent\" type=\"UnityEngine.Transform\" isBlackboard=\"True\"
@@ -97,7 +97,7 @@ MonoBehaviour:
     blackboard=\"bulletPrefab\" />\r\n          <entry name=\"velocity\" type=\"System.Single\"
     isBlackboard=\"True\" blackboard=\"velocity\" />\r\n        </inputValues>\r\n     
     </inputParams>\r\n      <outputParams />\r\n      <localParams />\r\n    </ActionNode>\r\n   
-    <ConditionEvalNode id=\"54\" policy=\"WAIT_UNTIL_FALSE_AND_FAIL\" name=\"HasWater\">\r\n     
+    <ConditionEvalNode id=\"54\" policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\" name=\"HasWater\">\r\n     
     <inputParams />\r\n      <outputParams />\r\n      <localParams />\r\n    </ConditionEvalNode>\r\n   
     <ActionNode id=\"53\" action=\"survival/DrinkWater\">\r\n      <inputParams />\r\n     
     <outputParams />\r\n      <localParams />\r\n    </ActionNode>\r\n    <ConditionEvalNode
@@ -255,7 +255,7 @@ MonoBehaviour:
     children in sequence until all of them are successful\" cardinality=\"-1\" hasParent=\"False\">\r\n         
     <BehaviorTree id=\"0\" />\r\n          <SequenceNode id=\"55\" />\r\n       
     </data>\r\n      </_data>\r\n    </SequenceNode>\r\n    <ActionNode id=\"36\">\r\n     
-    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"553.7332
+    <_data>\r\n        <data breakpoint=\"0\" selected=\"True\" position=\"553.7332
     698.6282\" name=\"survival/EatFood\" description=\"\" cardinality=\"0\" hasParent=\"True\">\r\n         
     <BehaviorTree id=\"0\" />\r\n          <ActionNode id=\"36\" />\r\n         
     <SelectorNode id=\"34\" />\r\n        </data>\r\n      </_data>\r\n    </ActionNode>\r\n   

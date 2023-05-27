@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Freezer : MonoBehaviour
 {
@@ -21,11 +22,18 @@ public class Freezer : MonoBehaviour
             increaseBodyTemp();
         else
         {
-            // TODO: start this after a while. let survivor hold on to heat for a bit.
-            decreaseBodyTemp();
+            KeepWarmTimer timer = new KeepWarmTimer(10);
+            timer.count();
+            if (timer.isFinished)
+            {
+                Debug.Log("you're starting to get cold");
+                decreaseBodyTemp();
+            }
         }
     }
 
+    float currCountdownValue;
+    
     void decreaseBodyTemp() => bodyTemp -= Time.deltaTime * currentDepletionRate;
     void increaseBodyTemp() => bodyTemp += Time.deltaTime * increaseRate;
 

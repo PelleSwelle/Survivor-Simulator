@@ -10,7 +10,7 @@ public class Inventory : MonoBehaviour
     public static Inventory instance { get; private set; }
     public List<Eatable> rations, meat, fish;
     public int amountOfFood;
-    public int unitsOfWater;
+    public int unitsOfWater, maxUnitsOfWater = 3;
     public int logsOfWood, maxLogs = 5;
 
     void Awake() => instance = this;
