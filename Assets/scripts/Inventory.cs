@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-    [SerializeField] TMP_Text meatText, fishText, rationsText, waterText, woodText;
-    [SerializeField] Button meatUp, meatDown, fishUp, fishDown, rationsUp, rationsDown, waterUp, waterDown;
+    [SerializeField] TMP_Text meatText, fishText, rationsText, waterText, woodText, fireText, woodPileText;
+    [SerializeField] Button meatUp, meatDown, fishUp, fishDown, rationsUp, rationsDown, waterUp, waterDown, fireUp, fireDown, pileUp, pileDown;
     public static Inventory instance { get; private set; }
     public List<Eatable> rations, meat, fish;
     public int amountOfFood;
@@ -32,6 +32,12 @@ public class Inventory : MonoBehaviour
         
         waterUp.onClick.AddListener(() => addWater());
         waterDown.onClick.AddListener(() => takeWater());
+
+        fireUp.onClick.AddListener(() => Fire.instance.add());
+        fireDown.onClick.AddListener(() => Fire.instance.take());
+
+        pileUp.onClick.AddListener(() => WoodPile.instance.add());
+        pileDown.onClick.AddListener(() => WoodPile.instance.take());
 
         unitsOfWater = 0;
     }
@@ -79,6 +85,8 @@ public class Inventory : MonoBehaviour
         fishText.SetText(fish.Count.ToString());
         rationsText.SetText(rations.Count.ToString());
         waterText.SetText(unitsOfWater.ToString());
+        fireText.SetText(Fire.instance.numberOfLogs.ToString());
+        woodPileText.SetText(WoodPile.instance.numberOfLogs.ToString());
         // woodText.SetText()
     }
 

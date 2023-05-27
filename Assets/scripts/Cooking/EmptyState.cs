@@ -18,6 +18,6 @@ public class EmptyState : BoilerBaseState
 
     public override void UpdateState(BoilerStateManager boiler)
     {
-        throw new System.NotImplementedException();
+        // do nothing
     }
 }

@@ -20,7 +20,7 @@ public class CameraController : MonoBehaviour
 
     void Awake() 
     {
-        state = CameraState.ABOVE;
+        state = CameraState.FREEFLY;
         instance = this;
     }
 
@@ -48,25 +48,23 @@ public class CameraController : MonoBehaviour
         mouseLookFromPlane();
     }
 
-    void orbitControls()
+    void translateOnPlane()
     {
-        focusOn(Survivor.instance.transform);
-        if (!RadialMenu.instance.isActiveAndEnabled)
-        {
-            orbitZoom();
-            orbit();
-        }
+        if (Input.GetKey(KeyCode.W))            
+            moveOnPlane(Vector3.forward);
+        if (Input.GetKey(KeyCode.S))
+            moveOnPlane(Vector3.back);            
+        if (Input.GetKey(KeyCode.A))  
+            moveOnPlane(Vector3.left);          
+        if (Input.GetKey(KeyCode.D))  
+            moveOnPlane(Vector3.right);          
     }
 
-    void freeFlyControls()
+    void moveOnPlane(Vector3 direction)
     {
-        if (!RadialMenu.instance.isActiveAndEnabled)
-        {
-            fly();
-            freeMouseLook();
-        }
+        Vector3 projected = Vector3.ProjectOnPlane(direction, Vector3.up).normalized;
+        transform.position += projected * flySpeed;
     }
-
     void planeZoom()
     {
         Transform plane = transform.parent;
@@ -98,21 +96,26 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    void translateOnPlane()
+    void orbitControls()
     {
-        if (Input.GetKey(KeyCode.W))            
-            moveOnPlane(Vector3.forward);
-        if (Input.GetKey(KeyCode.S))            
-            moveOnPlane(Vector3.back);
-        if (Input.GetKey(KeyCode.A))            
-            moveOnPlane(Vector3.left);
-        if (Input.GetKey(KeyCode.D))            
-            moveOnPlane(Vector3.right);
-        if (Input.GetKey(KeyCode.LeftControl))  
-            moveOnPlane(Vector3.down);
-        if (Input.GetKey(KeyCode.Space))        
-            moveOnPlane(Vector3.up);
+        focusOn(Survivor.instance.transform);
+        if (!RadialMenu.instance.isActiveAndEnabled)
+        {
+            orbitZoom();
+            orbit();
+        }
     }
+
+    void freeFlyControls()
+    {
+        if (!RadialMenu.instance.isActiveAndEnabled)
+        {
+            fly();
+            freeMouseLook();
+        }
+    }
+
+    
     
     void fly()
     {
@@ -132,11 +135,7 @@ public class CameraController : MonoBehaviour
 
     void move(Vector3 direction)
         => transform.position += Camera.main.transform.TransformDirection(direction * flySpeed);
-    void moveOnPlane(Vector3 direction)
-    {
-        Vector3 lockedDirection = new Vector3(direction.x, 0, direction.z); 
-        transform.position += Camera.main.transform.TransformDirection( lockedDirection * flySpeed);
-    }
+    
     void focusOn(Transform entity) => transform.LookAt(entity, Vector3.up);
 
     void orbitZoom()

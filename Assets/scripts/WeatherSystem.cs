@@ -4,6 +4,7 @@ public class WeatherSystem : MonoBehaviour
     public static WeatherSystem instance { get; private set; }
     float windForce, snowAmount;
     public float temperature;
+    public float minTemp = -1f, maxTemp = -40f; // TODO: put together with sun temp
 
     [SerializeField] GameObject lightWind, blizzard, heavyStorm, fxAudio;
     

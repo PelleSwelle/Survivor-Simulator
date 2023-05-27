@@ -11,7 +11,7 @@ public class Sun : MonoBehaviour
     [SerializeField] float rotationAngle;
     [SerializeField] float speed;
     public float temperature;
-    float maxTemp = 5, minTemp = -40;
+    float maxTemp = -1, minTemp = -40;
     public float timeOfDay;
     float minY = -567, maxY = 567;
     public float tempWeight = .8f; // how much the temperature influences the world temp

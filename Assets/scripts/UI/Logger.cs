@@ -19,6 +19,7 @@ public class Logger : MonoBehaviour
     currentTask,
     bodyTempValue, 
     energyValue, 
+    bodyTempDepletionRate,
     
     // world
     worldTempValue, 
@@ -40,11 +41,12 @@ public class Logger : MonoBehaviour
         displayBodyTemp();
         displayLogsInFire();
         displayWoodHeld();
+        displayBodyTempDepletionRate();
     }
 
 
     public void updateTaskText(string text) => currentTask.SetText(text); 
-
+    void displayBodyTempDepletionRate() => bodyTempDepletionRate.SetText(Survivor.instance.GetComponent<Freezer>().currentDepletionRate.ToString());
     void displayWoodHeld() => woodHeld.SetText(Survivor.instance.heldWood.ToString());
     void displayLogsInFire() => logsInFire.SetText(Fire.instance.numberOfLogs.ToString());
     void displayFireHealth() => fireHealthValue.SetText(Fire.instance.health.ToString("F2"));

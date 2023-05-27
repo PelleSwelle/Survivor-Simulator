@@ -13,6 +13,9 @@ public class WoodPile : Fillable
         numberOfLogs = 0;
         
         foreach ( Transform log in transform)
+        {
             log.GetComponent<MeshRenderer>().enabled = false;
+        }
     }
+
 }

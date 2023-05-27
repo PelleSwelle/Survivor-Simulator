@@ -24,10 +24,12 @@ public class Log : MonoBehaviour
         if (state == LogState.INVISIBLE)
         {
             mesh.enabled = false;
+            flame.SetActive(false);
         }
         if (state == LogState.VISIBLE)
         {
             mesh.enabled = true;
+            flame.SetActive(false);
         }
         if (state == LogState.BURNING)
         {
@@ -36,10 +38,7 @@ public class Log : MonoBehaviour
             flame.SetActive(true);
         }
     }
-    public void burn()
-    {
-        health -= depletionRate * Time.deltaTime;
-    }
+    public void burn() => health -= depletionRate * Time.deltaTime;
 }
 
 public enum LogState

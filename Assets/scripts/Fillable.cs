@@ -45,10 +45,13 @@ public abstract class Fillable : MonoBehaviour
     }
 
     void hideLatest()
-        => transform.GetChild(numberOfLogs - 1).GetComponent<MeshRenderer>().enabled = false;
+        => transform.GetChild(numberOfLogs - 1).GetComponent<Log>().state = LogState.INVISIBLE;
 
     void showLatest()
     {
-        transform.GetChild(numberOfLogs - 1).GetComponent<Log>().state = LogState.BURNING;
+        if (this.name == "bonfire")
+            transform.GetChild(numberOfLogs - 1).GetComponent<Log>().state = LogState.BURNING;
+        else if (this.name == "woodPile")
+            transform.GetChild(numberOfLogs - 1).GetComponent<Log>().state = LogState.VISIBLE;
     }
 }
