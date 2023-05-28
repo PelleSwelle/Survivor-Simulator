@@ -2,32 +2,30 @@ using UnityEngine;
 
 public class KeepWarmTimer
 {
-    float keepTime;
-    float currentTime;
-    public bool isFinished;
+    public float keepTime;
+    public float currentTime;
+
+    public bool isCounting;
 
     public KeepWarmTimer(float _keepTime)
     {
         keepTime = _keepTime;
         currentTime = _keepTime;
-        isFinished = false;
+        isCounting = false;
     }
 
     public void count()
     {
-        if (currentTime <= 0)
-            stop();
+        isCounting = true;
+
+        if (currentTime > 0)
+            currentTime -= Time.time;
         else
         {
-            currentTime -= Time.time;
-            Debug.Log("time until start getting cold: " + currentTime);
+            currentTime = 0;
+            isCounting = true;
         }
     }
 
-    void stop()
-    {
-        Debug.Log("timer is done");
-        currentTime = 0;
-        isFinished = true;
-    }
+    public bool isFinished() => currentTime <= 0;
 }

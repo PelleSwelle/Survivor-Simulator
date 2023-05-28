@@ -42,7 +42,6 @@ public class BoilerStateManager : MonoBehaviour
         Thirst thirst = Survivor.instance.GetComponent<Thirst>();
         thirst.waterLevel = thirst.maxWaterLevel;
         Debug.Log("took some water from the boiler.");
-        Inventory inventory = Survivor.instance.GetComponent<Inventory>();
-        inventory.unitsOfWater = inventory.maxUnitsOfWater;
+        Inventory.instance.unitsOfWater = Inventory.instance.maxUnitsOfWater;
     }
 }

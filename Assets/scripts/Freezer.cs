@@ -7,32 +7,33 @@ public class Freezer : MonoBehaviour
     public float currentDepletionRate, minDepletionRate = .1f, maxDepletionRate = .5f;
     float increaseRate = .2f;
     public float freezingTemp = 36, maxTemp = 38;
-    bool isNearHeatSource;
+    public KeepWarmTimer timer;
+    public float heatRetentionTime;
+    public float timeUntilFreeze;
     void Start()
     {
         bodyTemp = idealTemp;
+        timer = new KeepWarmTimer(heatRetentionTime);
+        timeUntilFreeze = timer.currentTime;
     }
 
     void Update()
     {
         currentDepletionRate = calculateDepletionRate();
-        isNearHeatSource = Vector3.Distance(transform.position, Fire.instance.transform.position) <= 3;
 
-        if (isNearHeatSource)
+        if (isNearHeatSource())
             increaseBodyTemp();
         else
         {
-            KeepWarmTimer timer = new KeepWarmTimer(10);
             timer.count();
-            if (timer.isFinished)
-            {
-                Debug.Log("you're starting to get cold");
+            timeUntilFreeze = timer.currentTime;
+
+            if (timer.isFinished())
                 decreaseBodyTemp();
-            }
         }
     }
 
-    float currCountdownValue;
+    public bool isNearHeatSource() => Vector3.Distance(transform.position, Fire.instance.transform.position) <= 3;
     
     void decreaseBodyTemp() => bodyTemp -= Time.deltaTime * currentDepletionRate;
     void increaseBodyTemp() => bodyTemp += Time.deltaTime * increaseRate;

@@ -12,7 +12,7 @@ namespace BBUnity.Actions
         {
             Debug.Log("bitten by wolf");
             this.gameObject.GetComponent<AudioSource>().Play();
-            Survivor.instance.GetComponent<Health>().value -= biteDamage;
+            // Survivor.instance.GetComponent<Health>().value -= biteDamage;
             base.OnStart();
         }
 

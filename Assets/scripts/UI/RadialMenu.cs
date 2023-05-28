@@ -27,11 +27,10 @@ public class RadialMenu : MonoBehaviour
 
     void drink() 
     {
-        Inventory inventory = GameObject.FindObjectOfType<Inventory>();
         close();
-        if (inventory.unitsOfWater > 0)
+        if (Inventory.instance.unitsOfWater > 0)
         {
-            inventory.unitsOfWater --;
+            Inventory.instance.unitsOfWater --;
             FindObjectOfType<Thirst>().waterLevel += 10;
         }
     }
@@ -52,7 +51,7 @@ public class RadialMenu : MonoBehaviour
     void eatSomething()
     {
         close();
-        FindObjectOfType<Inventory>().getLeastPerishableFood();
+        Inventory.instance.getLeastPerishableFood();
     }
 
     void takeDamage()

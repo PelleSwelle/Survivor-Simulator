@@ -7,7 +7,7 @@ namespace BBUnity.Actions
     [Action("FillFlask")]
     public class FillFlask : GOAction
     {
-        public override void OnStart() => GameObject.FindObjectOfType<Inventory>().unitsOfWater ++;
+        public override void OnStart() => Inventory.instance.unitsOfWater ++;
         public override TaskStatus OnUpdate() => TaskStatus.COMPLETED;
     }
 

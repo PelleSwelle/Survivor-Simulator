@@ -10,23 +10,21 @@ namespace BBUnity.Actions
         [Action("survival/EatFood")]
         public class Eat : GOAction
         {
-            Inventory inventory;
             Hunger hunger;
             Eatable foodToEat;
             bool hasFoodToEat;
 
             public override void OnStart()
             {
-                inventory = FindObjectOfType<Inventory>();
                 hunger = GameObject.FindObjectOfType<Hunger>();
-                hasFoodToEat = FindObjectOfType<Inventory>().amountOfFood > 0;
+                hasFoodToEat = Inventory.instance.amountOfFood > 0;
             }
 
             public override TaskStatus OnUpdate()
             {
                 if (hasFoodToEat)
                 {
-                    Survivor.instance.GetComponent<Hunger>().satiation += inventory.getLeastPerishableFood().nutritionalValue;
+                    Survivor.instance.GetComponent<Hunger>().satiation += Inventory.instance.getLeastPerishableFood().nutritionalValue;
                     Debug.Log("ate some food");
                     return TaskStatus.COMPLETED;
                 }

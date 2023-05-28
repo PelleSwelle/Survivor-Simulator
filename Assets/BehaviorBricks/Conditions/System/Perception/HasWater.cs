@@ -8,8 +8,7 @@ namespace BBUnity.Conditions
     {
         public override bool Check()
         {
-            Inventory inventory = GameObject.FindObjectOfType<Inventory>();
-            return inventory.unitsOfWater > 0;
+            return Inventory.instance.unitsOfWater > 0;
         }
     }
 

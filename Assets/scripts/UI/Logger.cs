@@ -27,10 +27,7 @@ public class Logger : MonoBehaviour
     
     // animals
     isVisibleToWolfValue, 
-    isDeerClose, 
-
-    // inventory
-    woodHeld;
+    isDeerClose;
 
     void Awake() => instance = this;
     void Update()
@@ -40,14 +37,12 @@ public class Logger : MonoBehaviour
         displayWorldTemp();
         displayBodyTemp();
         displayLogsInFire();
-        displayWoodHeld();
         displayBodyTempDepletionRate();
     }
 
 
     public void updateTaskText(string text) => currentTask.SetText(text); 
     void displayBodyTempDepletionRate() => bodyTempDepletionRate.SetText(Survivor.instance.GetComponent<Freezer>().currentDepletionRate.ToString());
-    void displayWoodHeld() => woodHeld.SetText(Survivor.instance.heldWood.ToString());
     void displayLogsInFire() => logsInFire.SetText(Fire.instance.numberOfLogs.ToString());
     void displayFireHealth() => fireHealthValue.SetText(Fire.instance.health.ToString("F2"));
     void displayTimeOfDay() => timeOfDayValue.SetText(Sun.instance.timeOfDay.ToString("F2"));

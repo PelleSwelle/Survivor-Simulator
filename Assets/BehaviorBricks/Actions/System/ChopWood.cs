@@ -8,13 +8,14 @@ namespace BBUnity.Actions
     public class ChopWood : GOAction
     {
         Transform survivor;
-        [InParam("treeToChop")] public Transform treeToChop;
+        Inventory inventory;
+        [InParam("treeToChop")] public GameObject treeToChop;
         private float timeToChop = 3f;
         private float timeLeft;
         public override void OnStart()
         {
+            
             Logger.instance.updateTaskText("chopping wood");
-            treeToChop = Util.getNearestTree();
             survivor = Survivor.instance.transform;
             timeLeft = timeToChop;
         }
@@ -27,7 +28,7 @@ namespace BBUnity.Actions
                 return TaskStatus.RUNNING;
             }
             GameObject.Destroy(treeToChop.gameObject);
-            Survivor.instance.heldWood += 4;
+            Inventory.instance.logsOfWood += 5;
             return TaskStatus.COMPLETED;
         }
 

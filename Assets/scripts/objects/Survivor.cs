@@ -4,7 +4,6 @@ using TMPro;
 public class Survivor : MonoBehaviour
 {
     public static Survivor instance { get; private set; }
-    public int heldWood, maxHeldWood = 4;
     public int ammo;
     public float seeRange = 10;
     public GameObject rangeRing;
@@ -30,6 +29,4 @@ public class Survivor : MonoBehaviour
         if (!isAlive)
             Debug.Log("survivor iz ded");
     }
-
-    void putWood(Fillable target) => target.add(heldWood);
 }

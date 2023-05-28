@@ -20,10 +20,9 @@ public class Deer : MonoBehaviour
     IEnumerator disappearAfter2Seconds()
     {
         yield return new WaitForSeconds(2);
-        Inventory inventory = FindObjectOfType<Inventory>();
         for (int i = 0; i < amountOfMeat; i++)
         {
-            inventory.meat.Add(new Meat());
+            Inventory.instance.meat.Add(new Meat());
         }
         Debug.Log("added 5 meat to inventory");
         Destroy(this.gameObject);

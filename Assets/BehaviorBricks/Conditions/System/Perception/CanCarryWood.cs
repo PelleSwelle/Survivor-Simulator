@@ -12,7 +12,7 @@ namespace BBUnity.Conditions
         public override bool Check()
         {
             Survivor survivor = Survivor.instance;
-            return survivor.heldWood < survivor.maxHeldWood;
+            return Inventory.instance.logsOfWood < Inventory.instance.maxLogs;
         }
     }
 

@@ -11,7 +11,7 @@ public class Inventory : MonoBehaviour
     public List<Eatable> rations, meat, fish;
     public int amountOfFood;
     public int unitsOfWater, maxUnitsOfWater = 3;
-    public int logsOfWood, maxLogs = 5;
+    public int logsOfWood, maxLogs;
 
     void Awake() => instance = this;
     void Start()
@@ -20,6 +20,8 @@ public class Inventory : MonoBehaviour
         meat = new List<Eatable>();
         fish = new List<Eatable>();
         addRation();
+        logsOfWood = 0;
+        maxLogs = 5;
 
         meatUp.onClick.AddListener(() => addMeat());
         meatDown.onClick.AddListener(() => takeMeat());
@@ -86,6 +88,7 @@ public class Inventory : MonoBehaviour
         rationsText.SetText(rations.Count.ToString());
         waterText.SetText(unitsOfWater.ToString());
         fireText.SetText(Fire.instance.numberOfLogs.ToString());
+        woodText.SetText(logsOfWood.ToString());
         woodPileText.SetText(WoodPile.instance.numberOfLogs.ToString());
         // woodText.SetText()
     }

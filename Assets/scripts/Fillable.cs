@@ -4,14 +4,13 @@ using System.Collections.Generic;
 public abstract class Fillable : MonoBehaviour
 {
     [SerializeField] GameObject logPrefab;
-    protected int maxNumberOfLogs = 10;
+    public int maxNumberOfLogs = 10;
     public int numberOfLogs;
     float closeDistance = 2;
     [SerializeField] protected List<Log> logPrefabs; // for vizualizing
 
-    void Update() => isInRange = Vector3.Distance(Survivor.instance.transform.position, transform.position) < closeDistance;
+    public bool isInRange() => Vector3.Distance(Survivor.instance.transform.position, transform.position) < closeDistance;
 
-    public bool isInRange;
     public void add()
     {
         if (numberOfLogs < maxNumberOfLogs)
@@ -23,10 +22,13 @@ public abstract class Fillable : MonoBehaviour
             Debug.Log("No more room");
     }
 
-    public void add(int amount)
+    public void add(int amount) // TODO: fix this
     {
-        for (int i = 0; i < amount; i++)
-            add();
+        if (numberOfLogs < maxNumberOfLogs)
+        {
+            for (int i = 0; i < amount; i++)
+                add();
+        }
     }
     public void take()
     {
@@ -35,7 +37,8 @@ public abstract class Fillable : MonoBehaviour
             numberOfLogs--;
             hideLatest();
         }
-        Debug.Log("There are no more logs to take");
+        else
+            Debug.Log("There are no more logs to take");
     }
 
     public void fill()
@@ -45,13 +48,18 @@ public abstract class Fillable : MonoBehaviour
     }
 
     void hideLatest()
-        => transform.GetChild(numberOfLogs - 1).GetComponent<Log>().state = LogState.INVISIBLE;
+    {
+        Log log = transform.GetChild(numberOfLogs).GetComponent<Log>();
+        log.state = LogState.INVISIBLE;
+    }
 
     void showLatest()
     {
+        Log log = transform.GetChild(numberOfLogs).GetComponent<Log>();
+
         if (this.name == "bonfire")
-            transform.GetChild(numberOfLogs - 1).GetComponent<Log>().state = LogState.BURNING;
+            log.state = LogState.BURNING;
         else if (this.name == "woodPile")
-            transform.GetChild(numberOfLogs - 1).GetComponent<Log>().state = LogState.VISIBLE;
+            log.state = LogState.VISIBLE;
     }
 }
