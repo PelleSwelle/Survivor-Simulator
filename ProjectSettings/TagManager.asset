@@ -12,6 +12,7 @@ TagManager:
   - deerWayPoint
   - rangeRing
   - pointOfInterest
+  - predator
   layers:
   - Default
   - TransparentFX

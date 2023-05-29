@@ -8,6 +8,7 @@
     public class ShootOnce : BasePrimitiveAction
     {
         [InParam("shootPoint")] public Transform shootPoint;
+        [InParam("shootTarget")] public GameObject shootTarget;
         [InParam("bullet")] public GameObject bullet;
         [InParam("velocity", DefaultValue = 30f)] public float velocity;
        
@@ -17,14 +18,16 @@
             if (hasAmmo)
             {
                 GameObject newBullet = GameObject.Instantiate(
-                    bullet, shootPoint.position,
-                    shootPoint.rotation * bullet.transform.rotation
+                    bullet, shootPoint.transform.position,
+                    shootPoint.transform.rotation * bullet.transform.rotation
                     ) as GameObject;
 
                 if (newBullet.GetComponent<Rigidbody>() == null)
                     newBullet.AddComponent<Rigidbody>();
-    
-                newBullet.GetComponent<Rigidbody>().velocity = velocity * shootPoint.forward;
+
+                
+
+                newBullet.GetComponent<Rigidbody>().velocity = velocity * shootTarget.transform.position;
                 Survivor.instance.GetComponent<AudioSource>().Play();
                 return TaskStatus.COMPLETED;
             }

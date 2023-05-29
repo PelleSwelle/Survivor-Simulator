@@ -28,9 +28,7 @@ namespace BBUnity.Actions
         {
             bool hasArrived = Vector3.Distance(agent.transform.position, currentPoi) < 2;
             if (hasArrived)
-            {
                 return TaskStatus.COMPLETED;
-            }
 
             return TaskStatus.RUNNING;
         }

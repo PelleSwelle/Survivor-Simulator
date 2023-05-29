@@ -21,6 +21,6 @@ MonoBehaviour:
     _description=\"\" _removeIfClosed=\"False\">\r\n      <_rootList />\r\n     
     <_nodes>\r\n        <nodes />\r\n      </_nodes>\r\n    </BehaviorTree>\r\n 
     </editorInfo>\r\n</BehaviorBricks>"
-  zoom: 1
+  zoom: 0.5
   subslist: []
   _guid: a5b11348d187e254aa80488bd5896349

@@ -72,7 +72,7 @@ public class Visualizer : MonoBehaviour
 
     void setSurvivorLine()
     {
-        LineRenderer line = Survivor.instance.GetComponent<LineRenderer>();
+        LineRenderer line = Survivor.instance.gameObject.AddComponent<LineRenderer>();
         NavMeshAgent agent = Survivor.instance.GetComponent<NavMeshAgent>();
 
         setLinePositions(agent, line, Color.green);
@@ -82,7 +82,7 @@ public class Visualizer : MonoBehaviour
     {
         foreach (Wolf wolf in wolves)
         {
-            LineRenderer line = wolf.GetComponent<LineRenderer>();
+            LineRenderer line = wolf.gameObject.AddComponent<LineRenderer>();
             NavMeshAgent agent = wolf.GetComponent<NavMeshAgent>();
             setLinePositions(agent, line, Color.red);
         }
@@ -91,7 +91,7 @@ public class Visualizer : MonoBehaviour
     {
         foreach (Deer deer in deers)
         {
-            LineRenderer line = deer.GetComponent<LineRenderer>();
+            LineRenderer line = deer.gameObject.AddComponent<LineRenderer>();
             NavMeshAgent agent = deer.GetComponent<NavMeshAgent>();
 
             setLinePositions(agent, line, Color.blue);

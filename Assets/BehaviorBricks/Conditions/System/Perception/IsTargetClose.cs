@@ -15,7 +15,8 @@ namespace BBUnity.Conditions
         {
             Vector3 thisPosition = gameObject.transform.position;
             Vector3 targetPosition = target.transform.position;
-            return (thisPosition - targetPosition).sqrMagnitude < closeDistance * closeDistance;
+            // return (thisPosition - targetPosition).sqrMagnitude < closeDistance * closeDistance;
+            return Vector3.Distance(thisPosition, targetPosition) < closeDistance;
         }
     }
 }

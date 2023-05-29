@@ -19,7 +19,6 @@ public class Survivor : MonoBehaviour
     {
         ammo = 10;
         isAlive = true;
-        
     }
 
     void Update() 

@@ -11,7 +11,7 @@ public class Hunger : MonoBehaviour
 
     void Start()
     {
-        depletionRate = 1;
+        depletionRate = .2f;
         maxSatiation = 100;
         satiation = 50;
     }

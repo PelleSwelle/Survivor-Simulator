@@ -6,7 +6,7 @@ public class BoilerStateManager : MonoBehaviour
     public TMP_Text statusText;
     public Material dirtyMaterial, boilingMaterial, frozenMaterial, cleanMaterial, emptyMaterial;
     [SerializeField] MeshRenderer mesh;
-    BoilerBaseState currentState;
+    public BoilerBaseState currentState;
     public BoilingState boiling = new BoilingState();
     public FrozenState frozen = new FrozenState();
     public EmptyState empty = new EmptyState();

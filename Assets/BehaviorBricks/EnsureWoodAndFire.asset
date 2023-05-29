@@ -122,7 +122,7 @@ MonoBehaviour:
     <BehaviorTree id=\"0\" />\r\n          <RepeatUntilFailed id=\"11\" />\r\n         
     <SequenceNode id=\"12\" />\r\n        </data>\r\n      </_data>\r\n    </RepeatUntilFailed>\r\n   
     <RepeatUntilFailed id=\"13\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
-    selected=\"True\" position=\"880.0005 412.2221\" name=\"Repeat Until Failed\"
+    selected=\"False\" position=\"880.0005 412.2221\" name=\"Repeat Until Failed\"
     description=\"Repeats the execution of its child node until it fails\" cardinality=\"1\"
     hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n          <RepeatUntilFailed
     id=\"13\" />\r\n          <SequenceNode id=\"12\" />\r\n        </data>\r\n     

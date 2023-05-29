@@ -14,11 +14,12 @@ namespace BBUnity.Actions
         public override void OnStart()
         {
             if (target == null)
-            {
                 Debug.LogError("The look target of this game object is null", gameObject);
-                return;
+            else 
+            {
+                Debug.DrawLine(gameObject.transform.position, target.transform.position);
+                targetTransform = target.transform;
             }
-            targetTransform = target.transform;
         }
 
         public override TaskStatus OnUpdate()

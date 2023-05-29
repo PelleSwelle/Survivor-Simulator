@@ -11,7 +11,7 @@ public class WeatherSystem : MonoBehaviour
     GameObject currentWeather;
 
     void Awake() => instance = this;
-
+    void Start() => disableAll();
     void Update() => updateTemperature();
     
     public void storm()

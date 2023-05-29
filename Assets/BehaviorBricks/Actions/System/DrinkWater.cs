@@ -13,7 +13,7 @@ namespace BBUnity.Actions
 
         public override TaskStatus OnUpdate()
         {
-            if (thirst.waterLevel < thirst.maxWaterLevel)
+            if (Inventory.instance.unitsOfWater > 0)
             {
                 Debug.Log("drank some water");
                 Inventory.instance.unitsOfWater --;
