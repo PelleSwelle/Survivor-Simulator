@@ -6,10 +6,6 @@ namespace BBUnity.Conditions
     public class IsHungry : GOCondition
     {
         Hunger hunger;
-        public override bool Check()
-        {
-            hunger = Survivor.instance.GetComponent<Hunger>();
-            return hunger.isHungry;
-        }
+        public override bool Check() => Survivor.instance.GetComponent<Hunger>().isHungry;
     }
 }

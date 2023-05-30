@@ -23,22 +23,15 @@ public class Visualizer : MonoBehaviour
         rangesVisible = false;
         poisVisible = false;
 
-        
+        destinationsToggle.onValueChanged.AddListener( delegate { toggleDestinationsVisible(); });
 
+        sightToggle.onValueChanged.AddListener( delegate { toggleRangesVisible(); });
 
-        destinationsToggle.onValueChanged.AddListener( delegate {
-            toggleDestinationsVisible();
-        });
-
-        sightToggle.onValueChanged.AddListener( delegate {
-            toggleRangesVisible();
-        });
-
-        poisToggle.onValueChanged.AddListener( delegate {
-            togglePoisVisible();
-        });
+        poisToggle.onValueChanged.AddListener( delegate { togglePoisVisible(); });
         fillLists();
     }
+
+    
 
     void Update()
     {
@@ -70,9 +63,13 @@ public class Visualizer : MonoBehaviour
         }
     }
 
+    void togglePoisVisible() => poisVisible = !poisVisible;
+    void toggleDestinationsVisible() => destinationsVisible = !destinationsVisible;
+    void toggleRangesVisible() => rangesVisible = !rangesVisible;
+
     void setSurvivorLine()
     {
-        LineRenderer line = Survivor.instance.gameObject.AddComponent<LineRenderer>();
+        LineRenderer line = Survivor.instance.gameObject.GetComponent<LineRenderer>();
         NavMeshAgent agent = Survivor.instance.GetComponent<NavMeshAgent>();
 
         setLinePositions(agent, line, Color.green);
@@ -80,18 +77,18 @@ public class Visualizer : MonoBehaviour
 
     void setWolfLines()
     {
-        foreach (Wolf wolf in wolves)
+        foreach (GameObject wolf in GameObject.FindGameObjectsWithTag("predator"))
         {
-            LineRenderer line = wolf.gameObject.AddComponent<LineRenderer>();
+            LineRenderer line = wolf.gameObject.GetComponent<LineRenderer>();
             NavMeshAgent agent = wolf.GetComponent<NavMeshAgent>();
             setLinePositions(agent, line, Color.red);
         }
     }
     void setDeerLines()
     {
-        foreach (Deer deer in deers)
+        foreach (GameObject deer in GameObject.FindGameObjectsWithTag("deer"))
         {
-            LineRenderer line = deer.gameObject.AddComponent<LineRenderer>();
+            LineRenderer line = deer.gameObject.GetComponent<LineRenderer>();
             NavMeshAgent agent = deer.GetComponent<NavMeshAgent>();
 
             setLinePositions(agent, line, Color.blue);
@@ -99,8 +96,6 @@ public class Visualizer : MonoBehaviour
     }
     void setLinePositions(NavMeshAgent agent, LineRenderer line, Color color)
     {
-        line.startColor = color;
-        line.endColor = color;
         if (agent.destination != null)
         {
             line.SetPosition(0, agent.transform.position);
@@ -110,10 +105,7 @@ public class Visualizer : MonoBehaviour
             throw new System.Exception("no destination set");
     }
 
-    void togglePoisVisible() => poisVisible = !poisVisible;
     
-    void toggleDestinationsVisible() => destinationsVisible = !destinationsVisible;
-    void toggleRangesVisible() => rangesVisible = !rangesVisible;
 
     void fillLists()
     {

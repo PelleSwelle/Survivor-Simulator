@@ -7,7 +7,7 @@ public class RadialMenu : MonoBehaviour
 {
     public static RadialMenu instance { get; private set; }
     [SerializeField] GameObject deerPrefab, wolfPrefab;
-    [SerializeField] Button spawnDeer, spawnWolf, addLog, takeDamageButton, eatButton, drinkButton, addToBoilerButton;
+    [SerializeField] Button spawnDeer, spawnWolf, takeDamageButton, eatButton, drinkButton, addToBoilerButton;
     
     bool isGhosting;
     GameObject heldObject;
@@ -17,7 +17,6 @@ public class RadialMenu : MonoBehaviour
     {
         spawnDeer.onClick.AddListener(() => ghostDeer());
         spawnDeer.onClick.AddListener(() => ghostWolf());
-        addLog.onClick.AddListener(() => addLogToFire());
         takeDamageButton.onClick.AddListener(() => takeDamage());
         eatButton.onClick.AddListener(() => eatSomething());
         drinkButton.onClick.AddListener(() => drink());
@@ -40,12 +39,6 @@ public class RadialMenu : MonoBehaviour
         close();
         BoilerStateManager boiler = FindObjectOfType<BoilerStateManager>();
         boiler.switchState(boiler.dirty);
-    }
-
-    void addLogToFire()
-    {
-        close();
-        Fire.instance.add();
     }
 
     void eatSomething()

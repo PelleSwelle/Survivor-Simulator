@@ -3,10 +3,7 @@ using System.Collections.Generic;
 
 public class Hunger : MonoBehaviour
 {
-    public float satiation;
-    public float depletionRate;
-    public float maxSatiation;
-    public float hungryThreshold = 40;
+    public float satiation, maxSatiation, depletionRate, hungryThreshold = 40;
     public bool isHungry;
 
     void Start()
@@ -20,6 +17,7 @@ public class Hunger : MonoBehaviour
     {
         isHungry = satiation < hungryThreshold;
         satiation -= depletionRate * Time.deltaTime;
+        
         if (satiation <= 0)
             GetComponent<Health>().value -= depletionRate * Time.deltaTime;
     }

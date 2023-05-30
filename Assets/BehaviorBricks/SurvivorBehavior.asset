@@ -60,7 +60,7 @@ MonoBehaviour:
     <SequenceNode id=\"97\" />\r\n            </child>\r\n          </GuardAndNode>\r\n       
     </elem>\r\n      </children>\r\n      <inputParams />\r\n      <outputParams
     />\r\n      <localParams />\r\n    </PrioritySelectorNode>\r\n    <ConditionEvalNode
-    id=\"92\" policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\" name=\"general/IsDyingFromThirst\">\r\n     
+    id=\"92\" policy=\"WAIT_UNTIL_FALSE_AND_FAIL\" name=\"general/IsDyingFromThirst\">\r\n     
     <inputParams />\r\n      <outputParams />\r\n      <localParams />\r\n    </ConditionEvalNode>\r\n   
     <SubbehaviorNode id=\"91\">\r\n      <_guid>2b7b0abc2b2bb4346bb87bea46c0d057</_guid>\r\n     
     <inputParams>\r\n        <inputValues>\r\n          <entry name=\"boiler\" type=\"UnityEngine.GameObject\"
@@ -93,7 +93,7 @@ MonoBehaviour:
     <inputParams />\r\n      <outputParams />\r\n      <localParams />\r\n    </ConditionEvalNode>\r\n   
     <ActionNode id=\"53\" action=\"survival/DrinkWater\">\r\n      <inputParams />\r\n     
     <outputParams />\r\n      <localParams />\r\n    </ActionNode>\r\n    <ConditionEvalNode
-    id=\"98\" policy=\"WAIT_UNTIL_FALSE_AND_FAIL\" name=\"AlwaysTrue\">\r\n     
+    id=\"98\" policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\" name=\"AlwaysTrue\">\r\n     
     <inputParams />\r\n      <outputParams />\r\n      <localParams />\r\n    </ConditionEvalNode>\r\n   
     <SequenceNode id=\"97\">\r\n      <children>\r\n        <elem>\r\n          <SubbehaviorNode
     id=\"68\" />\r\n        </elem>\r\n        <elem>\r\n          <ActionNode id=\"66\"
@@ -154,84 +154,84 @@ MonoBehaviour:
     id=\"90\" />\r\n          <ConditionEvalNode id=\"92\" />\r\n          <SubbehaviorNode
     id=\"93\" />\r\n          <ConditionEvalNode id=\"94\" />\r\n        </nodes>\r\n     
     </_nodes>\r\n    </BehaviorTree>\r\n    <RepeatDecorator id=\"1\">\r\n      <_data>\r\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"1405.719 317.9718\" name=\"Repeat\"
+    <data breakpoint=\"0\" selected=\"False\" position=\"1187.719 101.9718\" name=\"Repeat\"
     description=\"Repeats the execution of its child node\" cardinality=\"1\" hasParent=\"False\">\r\n         
     <BehaviorTree id=\"0\" />\r\n          <RepeatDecorator id=\"1\" />\r\n       
     </data>\r\n      </_data>\r\n    </RepeatDecorator>\r\n    <PrioritySelectorNode
     id=\"85\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"1310 442.4\" name=\"Priority Selector\" description=\"\" cardinality=\"1\"
+    position=\"1092 226.4\" name=\"Priority Selector\" description=\"\" cardinality=\"1\"
     hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n          <PrioritySelectorNode
     id=\"85\" />\r\n          <RepeatDecorator id=\"1\" />\r\n        </data>\r\n     
     </_data>\r\n    </PrioritySelectorNode>\r\n    <ConditionEvalNode id=\"92\">\r\n     
-    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"442 1344.8\"
+    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"224 1128.8\"
     name=\"general/IsDyingFromThirst\" description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\r\n         
     <BehaviorTree id=\"0\" />\r\n          <ConditionEvalNode id=\"92\" />\r\n         
     <PrioritySelectorNode id=\"85\" />\r\n        </data>\r\n      </_data>\r\n   
     </ConditionEvalNode>\r\n    <SubbehaviorNode id=\"91\">\r\n      <_data>\r\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"198 674.4\" name=\"EnsureHydration\"
+    <data breakpoint=\"0\" selected=\"False\" position=\"-20 458.4\" name=\"EnsureHydration\"
     description=\"\" cardinality=\"-1\" hasParent=\"False\">\r\n          <BehaviorTree
     id=\"0\" />\r\n          <SubbehaviorNode id=\"91\" />\r\n        </data>\r\n     
     </_data>\r\n    </SubbehaviorNode>\r\n    <ConditionEvalNode id=\"94\">\r\n     
-    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"960 1464.8\"
+    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"742 1248.8\"
     name=\"general/IsDyingFromHunger\" description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\r\n         
     <BehaviorTree id=\"0\" />\r\n          <ConditionEvalNode id=\"94\" />\r\n         
     <PrioritySelectorNode id=\"85\" />\r\n        </data>\r\n      </_data>\r\n   
     </ConditionEvalNode>\r\n    <SubbehaviorNode id=\"93\">\r\n      <_data>\r\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"452 670.4\" name=\"EnsureSatiation\"
+    <data breakpoint=\"0\" selected=\"False\" position=\"234 454.4\" name=\"EnsureSatiation\"
     description=\"\" cardinality=\"-1\" hasParent=\"False\">\r\n          <BehaviorTree
     id=\"0\" />\r\n          <SubbehaviorNode id=\"93\" />\r\n        </data>\r\n     
     </_data>\r\n    </SubbehaviorNode>\r\n    <ConditionEvalNode id=\"90\">\r\n     
-    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"1573.291
-    1397.548\" name=\"Perception/IsDeerClose\" description=\"Eval\" cardinality=\"1\"
+    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"1355.291
+    1181.548\" name=\"Perception/IsDeerClose\" description=\"Eval\" cardinality=\"1\"
     hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n          <ConditionEvalNode
     id=\"90\" />\r\n          <PrioritySelectorNode id=\"85\" />\r\n        </data>\r\n     
     </_data>\r\n    </ConditionEvalNode>\r\n    <SequenceNode id=\"64\">\r\n     
-    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"743.6455
-    676.7738\" name=\"Sequence\" description=\"Executes all its children in sequence
+    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"525.6455
+    460.7738\" name=\"Sequence\" description=\"Executes all its children in sequence
     until all of them are successful\" cardinality=\"-1\" hasParent=\"False\">\r\n         
     <BehaviorTree id=\"64\" />\r\n        </data>\r\n      </_data>\r\n    </SequenceNode>\r\n   
     <ConditionEvalNode id=\"95\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
-    selected=\"False\" position=\"2069.466 1549.256\" name=\"general/IsHungry\" description=\"Eval\"
+    selected=\"False\" position=\"1851.466 1333.256\" name=\"general/IsHungry\" description=\"Eval\"
     cardinality=\"1\" hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n         
     <ConditionEvalNode id=\"95\" />\r\n          <PrioritySelectorNode id=\"85\"
     />\r\n        </data>\r\n      </_data>\r\n    </ConditionEvalNode>\r\n    <ActionNode
     id=\"36\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"971.733 668.6282\" name=\"survival/EatFood\" description=\"\" cardinality=\"0\"
+    position=\"753.733 452.6282\" name=\"survival/EatFood\" description=\"\" cardinality=\"0\"
     hasParent=\"False\">\r\n          <BehaviorTree id=\"36\" />\r\n        </data>\r\n     
     </_data>\r\n    </ActionNode>\r\n    <ConditionEvalNode id=\"96\">\r\n      <_data>\r\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"2742.768 1547.571\" name=\"general/IsThirsty\"
+    <data breakpoint=\"0\" selected=\"False\" position=\"2524.768 1331.571\" name=\"general/IsThirsty\"
     description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\r\n          <BehaviorTree
     id=\"0\" />\r\n          <ConditionEvalNode id=\"96\" />\r\n          <PrioritySelectorNode
     id=\"85\" />\r\n        </data>\r\n      </_data>\r\n    </ConditionEvalNode>\r\n   
     <ActionNode id=\"53\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"1216.384 682.7856\" name=\"survival/DrinkWater\" description=\"\"
-    cardinality=\"0\" hasParent=\"False\">\r\n          <BehaviorTree id=\"53\" />\r\n       
-    </data>\r\n      </_data>\r\n    </ActionNode>\r\n    <ConditionEvalNode id=\"98\">\r\n     
-    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"3008
-    1266.8\" name=\"AlwaysTrue\" description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\r\n         
-    <BehaviorTree id=\"0\" />\r\n          <ConditionEvalNode id=\"98\" />\r\n         
-    <PrioritySelectorNode id=\"85\" />\r\n        </data>\r\n      </_data>\r\n   
-    </ConditionEvalNode>\r\n    <SequenceNode id=\"97\">\r\n      <_data>\r\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"1502 684.4\" name=\"Sequence\"
-    description=\"Executes all its children in sequence until all of them are successful\"
-    cardinality=\"-1\" hasParent=\"False\">\r\n          <BehaviorTree id=\"0\" />\r\n         
-    <SequenceNode id=\"97\" />\r\n        </data>\r\n      </_data>\r\n    </SequenceNode>\r\n   
-    <ActionNode id=\"62\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"322.3123 1016.108\" name=\"GameObject/ClosestGameObjectWithTag\" description=\"Finds
-    the closest game object with a given tag\" cardinality=\"0\" hasParent=\"True\">\r\n         
+    position=\"998.384 466.7856\" name=\"survival/DrinkWater\" description=\"\" cardinality=\"0\"
+    hasParent=\"False\">\r\n          <BehaviorTree id=\"53\" />\r\n        </data>\r\n     
+    </_data>\r\n    </ActionNode>\r\n    <ConditionEvalNode id=\"98\">\r\n      <_data>\r\n       
+    <data breakpoint=\"0\" selected=\"False\" position=\"2790 1050.8\" name=\"AlwaysTrue\"
+    description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\r\n          <BehaviorTree
+    id=\"0\" />\r\n          <ConditionEvalNode id=\"98\" />\r\n          <PrioritySelectorNode
+    id=\"85\" />\r\n        </data>\r\n      </_data>\r\n    </ConditionEvalNode>\r\n   
+    <SequenceNode id=\"97\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
+    position=\"1284 468.4\" name=\"Sequence\" description=\"Executes all its children
+    in sequence until all of them are successful\" cardinality=\"-1\" hasParent=\"False\">\r\n         
+    <BehaviorTree id=\"0\" />\r\n          <SequenceNode id=\"97\" />\r\n       
+    </data>\r\n      </_data>\r\n    </SequenceNode>\r\n    <ActionNode id=\"62\">\r\n     
+    <_data>\r\n        <data breakpoint=\"0\" selected=\"False\" position=\"104.3123
+    800.108\" name=\"GameObject/ClosestGameObjectWithTag\" description=\"Finds the
+    closest game object with a given tag\" cardinality=\"0\" hasParent=\"True\">\r\n         
     <BehaviorTree id=\"64\" />\r\n          <ActionNode id=\"62\" />\r\n         
     <SequenceNode id=\"64\" />\r\n        </data>\r\n      </_data>\r\n    </ActionNode>\r\n   
-    <ActionNode id=\"100\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"True\"
-    position=\"816 1008.4\" name=\"ShootDeer\" description=\"\" cardinality=\"0\"
+    <ActionNode id=\"100\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
+    position=\"598 792.4\" name=\"ShootDeer\" description=\"\" cardinality=\"0\"
     hasParent=\"True\">\r\n          <BehaviorTree id=\"64\" />\r\n          <ActionNode
     id=\"100\" />\r\n          <SequenceNode id=\"64\" />\r\n        </data>\r\n     
     </_data>\r\n    </ActionNode>\r\n    <SubbehaviorNode id=\"68\">\r\n      <_data>\r\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"1334 886.4\" name=\"EnsureWoodAndFire\"
+    <data breakpoint=\"0\" selected=\"False\" position=\"1116 670.4\" name=\"EnsureWoodAndFire\"
     description=\"\" cardinality=\"-1\" hasParent=\"True\">\r\n          <BehaviorTree
     id=\"0\" />\r\n          <SubbehaviorNode id=\"68\" />\r\n          <SequenceNode
     id=\"97\" />\r\n        </data>\r\n      </_data>\r\n    </SubbehaviorNode>\r\n   
     <ActionNode id=\"66\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"1596.059 883.4525\" name=\"explore\" description=\"\" cardinality=\"0\"
+    position=\"1378.059 667.4525\" name=\"explore\" description=\"\" cardinality=\"0\"
     hasParent=\"True\">\r\n          <BehaviorTree id=\"0\" />\r\n          <ActionNode
     id=\"66\" />\r\n          <SequenceNode id=\"97\" />\r\n        </data>\r\n     
     </_data>\r\n    </ActionNode>\r\n  </editorInfo>\r\n  <runtimeInfo>\r\n    <BehaviorTree

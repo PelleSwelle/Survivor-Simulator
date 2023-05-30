@@ -23,6 +23,7 @@ namespace BBUnity.Actions
             targetTransform = target.transform;
 
             navAgent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
+            
             if (navAgent == null)
             {
                 Debug.LogWarning("The " + gameObject.name + " game object does not have a Nav Mesh Agent component to navigate. One with default values has been added", gameObject);

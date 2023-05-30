@@ -21,15 +21,9 @@ public class BoilerStateManager : MonoBehaviour
         currentState.EnterState(this);
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        currentState.OnCollisionEnter(this, collision);
-    }
+    void OnCollisionEnter(Collision collision) => currentState.OnCollisionEnter(this, collision);
 
-    void Update()
-    {
-        currentState.UpdateState(this);
-    }
+    void Update() => currentState.UpdateState(this);
 
     public void switchState(BoilerBaseState state)
     {

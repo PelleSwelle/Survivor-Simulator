@@ -7,12 +7,12 @@ namespace BBUnity.Actions
     public class Bite : GOAction
     {
         [InParam("wolf")] Wolf wolf;
-        int biteDamage = 20;
+        int biteDamage = 10;
         public override void OnStart()
         {
             Debug.Log("bitten by wolf");
             this.gameObject.GetComponent<AudioSource>().Play();
-            // Survivor.instance.GetComponent<Health>().value -= biteDamage;
+            Survivor.instance.GetComponent<Health>().value -= biteDamage;
             base.OnStart();
         }
 
